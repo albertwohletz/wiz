@@ -14,63 +14,71 @@
 	</head>
 	<body>
         <!-- nav buttons -->
-        <ul class="nav nav-tabs navbar-inverse">
-            <li class='nav-common'><a data-role="button" href="#">Common</a></li>
-            <li class='nav-skills'><a data-role="button" href="#">Skills</a></li>
-            <li class='nav-spells'><a data-role="button" href="#">Spells and Spirits</a></li>
-            <li class='nav-adept'><a data-role="button" href="#">Adept Powers</a></li>
-            <li class='nav-bioware'><a data-role="button" href="#">Cyberware/Bioware</a></li>
-            <li class='nav-gear'><a data-role="button" href="#">Street Gear</a></li>
-            <li class='nav-drones'><a data-role="button" href="#">Vehicles and Drones</a></li>
-            <li class='nav-bio'><a href="#">Charecter Info</a></li>
+        <ul class="nav nav-tabs navbar-inverse" role="tablist">
+            <li role="presentation" class="active"><a href="#priorities" aria-controls="priorities" role="tab" data-toggle="tab">Priorities</a></li>
+            <li role="presentation"><a href="#common" aria-controls="common" role="tab" data-toggle="tab">Common</a></li>
+            <li role="presentation"><a href="#skills" aria-controls="skills" role="tab" data-toggle="tab">Skills</a></li>
+            <li role="presentation"><a href="#common" aria-controls="common" role="tab" data-toggle="tab">Spells and Spirits</a></li>
+            <li role="presentation"><a href="#common" aria-controls="common" role="tab" data-toggle="tab">Adept Powers</a></li>
+            <li role="presentation"><a href="#common" aria-controls="common" role="tab" data-toggle="tab">Cyberware/Bioware</a></li>
+            <li role="presentation"><a href="#common" aria-controls="common" role="tab" data-toggle="tab">Street Gear</a></li>
+            <li role="presentation"><a href="#common" aria-controls="common" role="tab" data-toggle="tab">Vehicles and Drones</a></li>
+            <li role="presentation"><a href="#common" aria-controls="common" role="tab" data-toggle="tab">Charecter Info</a></li>
             <li class="divider"></li>
             <li><a href="#">Save</a></li>
         </ul>
 
         <!-- Main Wrapper -->     
         <div class="main-container col-xs-10 resizable">           
-            <!-- Common Tab -->
-
-            <!-- Qualities -->
-            <div class='qualities col-xs-2'>
-                <ul>Qualities</ul>
-                <ul><button data-toggle="modal" data-target="#qualities-modal" class='btn-xs add-qualities'>Add</button><button class='btn-xs'>Delete</button></ul>
-                <div class='qualities-list'>
+            <div class="tab-content">
+                <!-- Priorities Tab -->
+                <div role="tabpanel" class="tab-pane active" id="priorities">
+                    
                 </div>
-            </div>
 
-            <!-- Right Pane -->
-            <div class='col-xs-10'>
-                <div class='attributes'> 
-                    <table class='table'>
-                    <thead>
-                        <tr>
-                            <th>Attributes</th>
-                            <th>Base</th>
-                            <th>Karma</th>
-                            <th>Val(Aug)</th>
-                            <th>Limits</th>
-                        </tr>
-                    </thead>
-                    {% for att in attributes %}
-                    <tr>
-                        <td><label for="spinner">{{att.full}}</label></td>
-                        <td class='{{att.short}}-base'><input class="spinner" value="1"></td>
-                        <td class='{{att.short}}-karma'><input class="spinner" value="0"></td>
-                        <td class='{{att.short}}-val'>1</td>
-                        <td class='{{att.short}}-limit'>6(10)
-                    </tr>
-                    {% endfor %}
-                    </table> 
-                </div>
-                <div class='contacts'>
-                    Contacts
-                    <div>
-                    <button class='btn'>Add</button>
+                <!-- Common Tab -->
+                <div role="tabpanel" class="tab-pane" id="common">
+                    <!-- Qualities -->
+                    <div class='qualities col-xs-2'>
+                        <ul>Qualities</ul>
+                        <ul><button data-toggle="modal" data-target="#qualities-modal" class='btn-xs add-qualities'>Add</button><button class='btn-xs'>Delete</button></ul>
+                        <div class='qualities-list'>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Pane -->
+                    <div class='col-xs-10'>
+                        <div class='attributes'> 
+                            <table class='table'>
+                            <thead>
+                                <tr>
+                                    <th>Attributes</th>
+                                    <th>Base</th>
+                                    <th>Karma</th>
+                                    <th>Val(Aug)</th>
+                                    <th>Limits</th>
+                                </tr>
+                            </thead>
+                            {% for att in attributes %}
+                            <tr>
+                                <td><label for="spinner">{{att.full}}</label></td>
+                                <td class='{{att.short}}-base'><input class="spinner" value="1"></td>
+                                <td class='{{att.short}}-karma'><input class="spinner" value="0"></td>
+                                <td class='{{att.short}}-val'>1</td>
+                                <td class='{{att.short}}-limit'>6(10)</td>
+                            </tr>
+                            {% endfor %}
+                            </table> 
+                        </div>
+                        <div class='contacts'>
+                            Contacts
+                            <div>
+                            <button class='btn'>Add</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <!-- Summary Sidebar -->
