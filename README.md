@@ -46,3 +46,7 @@ Charecter Info
 Known Issues
 ============
 Some qualities do not let you apply the rating, instead take them multiple times for now.
+
+Screen Shots
+=============
+![First Screenshot](http://imgur.com/lVgW5Aq "First Screenshot, shows you what planned look/feel is like")
