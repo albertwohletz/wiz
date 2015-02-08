@@ -21,7 +21,7 @@ $(function(){
 		$('.positive-qualities').show();
 	});
 	$('.positive-quality-item').click(function(e){
-		desc = 'karma: ' + $( this ).val() + '</br>' + $( this ).attr('description')
+		desc = 'Karma: ' + $( this ).val() + '</br>' + $( this ).attr('description')
 		$('.quality-description').html(desc);
 	});
 });
