@@ -42,3 +42,7 @@ Vehicles and Drones
 Charecter Info
 --------
 20 Questions
+
+Known Issues
+============
+Some qualities do not let you apply the rating, instead take them multiple times for now.
