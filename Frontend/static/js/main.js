@@ -5,7 +5,6 @@
 // Init JQuery Elements
 $(function() {
     $( ".resizable" ).resizable();
-    $( ".overlay" ).draggable();
 
     // Overlay close button
     $('.close-button').click(function() {
