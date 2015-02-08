@@ -9,26 +9,68 @@
         <link rel="stylesheet" href="{% static 'css/main_style.css' %}" >
         <script src={% static 'bootstrap-3.2.0-dist/js/bootstrap.min.js' %}></script>
         <link href="{% static 'bootstrap-glyphicons-master/css/bootstrap.icon-large.min.css' %}" rel="stylesheet">
+        <script src={% static 'js/main.js' %}></script>
+        <script src={% static 'js/changepane.js' %}></script>
 	</head>
 	<body>
-        <div class="header">
-            <button>Priorities</button>
-            <button>Common</button>
-            <button>Skills</button>
-            <button>Limits</button>
-            <button>Spells and Spirits</button>
-            <button>Adept Powers</button>
-            <button>Cyberware/Bioware</button>
-            <button>Street Gear</button>
-            <button>Vehicles and Drones</button>
-            <button>Charecter Info</button>
-        </div>
-        <div class="main-container col-xs-10 resizable" style="background-color:#00cc00">
+        <!-- nav buttons -->
+        <ul class="nav nav-tabs navbar-inverse">
+            <li class='nav-common'><a data-role="button" href="#">Common</a></li>
+            <li class='nav-skills'><a data-role="button" href="#">Skills</a></li>
+            <li class='nav-spells'><a data-role="button" href="#">Spells and Spirits</a></li>
+            <li class='nav-adept'><a data-role="button" href="#">Adept Powers</a></li>
+            <li class='nav-bioware'><a data-role="button" href="#">Cyberware/Bioware</a></li>
+            <li class='nav-gear'><a data-role="button" href="#">Street Gear</a></li>
+            <li class='nav-drones'><a data-role="button" href="#">Vehicles and Drones</a></li>
+            <li class='nav-bio'><a href="#">Charecter Info</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Save</a></li>
+        </ul>
+
+        <!-- Main Wrapper -->     
+        <div class="main-container col-xs-10 resizable">           
             <!-- Common Tab -->
-            <!-- Qualities
+
+            <!-- Qualities -->
+            <div class='qualities col-xs-2'>
+                <ul>Qualities</ul>
+                <ul><button class='btn-xs'>Add</button><button class='btn-xs'>Delete</button></ul>
+                <div class='qualities-list'>
+                </div>
+            </div>
+
+            <!-- Right Pane -->
+            <div class='col-xs-10'>
+                <div class='attributes'> 
+                    <table class='table'>
+                    <thead>
+                        <tr>
+                        <th>Attributes</th>
+                        <th>Base</th>
+                        <th>Karma</th>
+                        <th>Val(Aug)</th>
+                        <th>Limits</th>
+                        </tr>
+                    </thead>
+                    {% for att in attributes %}
+                    <tr>
+                        <td><label for="spinner">{{att.full}}</label></td>
+                        <td class='{{att.short}}-base'><input class="spinner" value="1"></td>
+                        <td class='{{att.short}}-karma'><input class="spinner" value="0"></td>
+                        <td class='{{att.short}}-val'>1</td>
+                        <td class='{{att.short}}-limit'>6(10)
+                    </tr>
+                    {% endfor %}
+                    </table> 
+                    
+                </div>
+                <div class='contacts'>
+                    
+                </div>
+            </div>
 
         </div>
-        <div class="side-bar col-xs-2 resizable" style="background-color:#0000cc">
+        <div class="side-bar col-xs-2 resizable">
 
         </div>
         <!-- Karma Essence Nuyen -->

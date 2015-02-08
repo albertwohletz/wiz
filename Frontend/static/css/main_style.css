@@ -19,8 +19,12 @@
 }
 
 .main-container{
-
+    padding: 30px;
 }
 .side-bar{
 
+}
+
+.spinner{
+    width:25px;
 }
