@@ -31,53 +31,9 @@
         <!-- Main Wrapper -->     
         <div class="main-container col-xs-10 resizable">           
             <div class="tab-content">
-                <!-- Priorities Tab -->
-                <div role="tabpanel" class="tab-pane active" id="priorities">
-                    
-                </div>
-
-                <!-- Common Tab -->
-                <div role="tabpanel" class="tab-pane" id="common">
-                    <!-- Qualities -->
-                    <div class='qualities col-xs-2'>
-                        <ul>Qualities</ul>
-                        <ul><button data-toggle="modal" data-target="#qualities-modal" class='btn-xs add-qualities'>Add</button><button class='btn-xs'>Delete</button></ul>
-                        <div class='qualities-list'>
-                        </div>
-                    </div>
-                    
-                    <!-- Right Pane -->
-                    <div class='col-xs-10'>
-                        <div class='attributes'> 
-                            <table class='table'>
-                            <thead>
-                                <tr>
-                                    <th>Attributes</th>
-                                    <th>Base</th>
-                                    <th>Karma</th>
-                                    <th>Val(Aug)</th>
-                                    <th>Limits</th>
-                                </tr>
-                            </thead>
-                            {% for att in attributes %}
-                            <tr>
-                                <td><label for="spinner">{{att.full}}</label></td>
-                                <td class='{{att.short}}-base'><input class="spinner" value="1"></td>
-                                <td class='{{att.short}}-karma'><input class="spinner" value="0"></td>
-                                <td class='{{att.short}}-val'>1</td>
-                                <td class='{{att.short}}-limit'>6(10)</td>
-                            </tr>
-                            {% endfor %}
-                            </table> 
-                        </div>
-                        <div class='contacts'>
-                            Contacts
-                            <div>
-                            <button class='btn'>Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Tab Content -->
+                {% include 'priorities.html' %}
+                {% include 'common.html' %}
             </div>
         </div>
 
