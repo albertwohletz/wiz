@@ -34,7 +34,7 @@
             <!-- Qualities -->
             <div class='qualities col-xs-2'>
                 <ul>Qualities</ul>
-                <ul><button class='btn-xs add-qualities'>Add</button><button class='btn-xs'>Delete</button></ul>
+                <ul><button data-toggle="modal" data-target="#qualities-modal" class='btn-xs add-qualities'>Add</button><button class='btn-xs'>Delete</button></ul>
                 <div class='qualities-list'>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                         <ul class="nav nav-tabs">
                             <li class='nav-common'><a data-role="button" href="#">Common</a></li>
                             <li class='nav-skills'><a data-role="button" href="#">Skills</a></li>
-                        <                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /ul>
+                        </ul>                                                                                                      /ul>
                 </thead>
                 <tr><td>Primary Attributes</td><td>0 of 16</td></tr>
                 <tr><td>Special Attributes</td><td>0 of 16</td></tr>
@@ -101,19 +101,30 @@
         <div class="footer"></div>
 
         <!-- Overlays -->
-        <div class='overlay positive-qualities'>
-            <span class="input-group-btn glyphicon close-button" title="Save">
-                <button class="btn btn-default" type="button" id="save-edit"><span class="glyphicon glyphicon-remove"></span></button>
-            </span>
-            <div class='col-xs-6'>
-                <ul class="list-group">
-                {% for quality in positive_qualities %}
-                    <li class="list-group-item no-pad positive-quality-item" value={{quality.karma}} description="{{quality.description}}">{{quality.name}}</li>
-                {% endfor %}
-                </ul>
-            </div>
-            <div class='quality-description col-xs-6'>
-                
+        <div class="modal fade" id='qualities-modal'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class='positive-qualities'>
+                            <div class='col-xs-6'>
+                                <ul class="list-group qualities-list">
+                                {% for quality in positive_qualities %}
+                                    <li class="list-group-item no-pad positive-quality-item" value={{quality.karma}} description="{{quality.description}}">{{quality.name}}</li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                            <div class='col-xs-6'>
+                                <div class='quality-description'>
+                                </div>
+                                <ul class="nav nav-tabs">
+                                    <li class='nav-cancel'><a data-role="button" href="#">Cancel</a></li>
+                                    <li class='nav-add-close'><a data-role="button" href="#">Add</a></li>
+                                    <li class='nav-add'><a data-role="button" href="#">Add & More</a></li>
+                                </ul>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
             }

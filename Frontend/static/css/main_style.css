@@ -1,7 +1,7 @@
 .overlay
 {
     display: none;
-    width: 300px;
+    width: 600px;
     height: 300px;
     background: #e2e2e2; /* Old browsers */
     background: -moz-linear-gradient(top, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 100%, #fefefe 100%); /* FF3.6+ */
