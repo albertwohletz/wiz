@@ -45,11 +45,11 @@
                     <table class='table'>
                     <thead>
                         <tr>
-                        <th>Attributes</th>
-                        <th>Base</th>
-                        <th>Karma</th>
-                        <th>Val(Aug)</th>
-                        <th>Limits</th>
+                            <th>Attributes</th>
+                            <th>Base</th>
+                            <th>Karma</th>
+                            <th>Val(Aug)</th>
+                            <th>Limits</th>
                         </tr>
                     </thead>
                     {% for att in attributes %}
@@ -62,16 +62,39 @@
                     </tr>
                     {% endfor %}
                     </table> 
-                    
                 </div>
                 <div class='contacts'>
-                    
+                    Contacts
+                    <div>
+                    <button class='btn'>Add</button>
+                    </div>
                 </div>
             </div>
 
         </div>
-        <div class="side-bar col-xs-2 resizable">
 
+        <!-- Summary Sidebar -->
+        <div class="side-bar col-xs-2 resizable">
+            <table class='table'>
+                <thead>
+                        <ul class="nav nav-tabs">
+                            <li class='nav-common'><a data-role="button" href="#">Common</a></li>
+                            <li class='nav-skills'><a data-role="button" href="#">Skills</a></li>
+                        </ul>
+                </thead>
+                <tr><td>Primary Attributes</td><td>0 of 16</td></tr>
+                <tr><td>Special Attributes</td><td>0 of 16</td></tr>
+                <tr><td>Positive Qualities</td><td>0 of 16</td></tr>
+                <tr><td>Negative Qualities</td><td>0 of 16</td></tr>
+                <tr><td>Nuyen</td><td>0 of 16</td></tr>
+                <tr><td>Skill Groups</td><td>0 of 16</td></tr>
+                <tr><td>Active Skills</td><td>0 of 16</td></tr>
+                <tr><td>Knowledge Skills</td><td>0 of 16</td></tr>
+                <tr><td>Spells</td><td>0 of 16</td></tr>
+                <tr><td>Complex Forms</td><td>0 of 16</td></tr>
+                <tr><td>Essence</td><td>0 of 16</td></tr>
+                <tr><td>Contacts</td><td>0 of 16</td></tr>
+            </table>
         </div>
         <!-- Karma Essence Nuyen -->
         <!-- Button to exchange karma to nuyen -->
