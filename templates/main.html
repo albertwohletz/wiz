@@ -34,7 +34,7 @@
             <!-- Qualities -->
             <div class='qualities col-xs-2'>
                 <ul>Qualities</ul>
-                <ul><button class='btn-xs'>Add</button><button class='btn-xs'>Delete</button></ul>
+                <ul><button class='btn-xs add-qualities'>Add</button><button class='btn-xs'>Delete</button></ul>
                 <div class='qualities-list'>
                 </div>
             </div>
@@ -102,6 +102,9 @@
 
         <!-- Overlays -->
         <div class='overlay positive-qualities'>
+            <span class="input-group-btn glyphicon close-button" title="Save">
+                <button class="btn btn-default" type="button" id="save-edit"><span class="glyphicon glyphicon-remove"></span></button>
+            </span>
             <div class='col-xs-6'>
                 <ul class="list-group">
                 {% for quality in positive_qualities %}
