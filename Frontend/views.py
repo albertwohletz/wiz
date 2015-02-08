@@ -17,7 +17,11 @@ def home(request):
     		{'short': 'mag', 'full': 'Magic'}, 
     		{'short': 'res', 'full': 'Resonance'}
     	],
-        'positive_qualities': models.PositiveQualities.objects.all()
+        'positive_qualities': models.PositiveQualities.objects.all(),
+        'priorities': {
+            'metatype': {},
+            'attributes': {'A':24,'B':20,'C':16,'D':14,'E':12}
+        }
     }
 
     return render(request, 'main.html', params)

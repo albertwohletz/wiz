@@ -2,52 +2,52 @@
 <form class="form-horizontal">
 	<div class="form-group form-inline">
 		<label for="metatype" class="col-sm-2 control-label">Metatype</label>
-		<select class="form-control" id="metatype">
-	  		<option>1</option>
-	  		<option>2</option>
-	  		<option>3</option>
-	  		<option>4</option>
-	  		<option>5</option>
+		<select class="form-control" id="priority-metatype">
+	  		<option value='A'>A: Human(9) Elf(8) Dwarf(7) Ork(7) Troll(5)</option>
+	  		<option value='B'>B: Human(7) Elf(6) Dwarf(4) Ork(4) Troll(0)</option>
+	  		<option value='C'>C: Human(5) Elf(3) Dwarf(1) Ork(0)</option>
+	  		<option value='D'>D: Human(3) Elf(0)</option>
+	  		<option value='E'>E: Human(1)</option>
 		</select>	
 	</div>
 	<div class="form-group form-inline">
 		<label for="attributes" class="col-sm-2 control-label">Attributes</label>
-		<select class="form-control" id="attributes">
-	  		<option value='24'>A: 24 Attributes</option>
-	  		<option value='20'>B: 20 Attributes</option>
-	  		<option value='16'>C: 16 Attributes</option>
-	  		<option value='14'>D: 14 Attributes</option>
-	  		<option value='12'>E: 12 Attributes</option>
+		<select class="form-control" id="priority-attributes">
+	  		<option value='{{priorities.attributes.A}}'>A: {{priorities.attributes.A}} Attributes</option>
+	  		<option value='{{priorities.attributes.B}}'>B: {{priorities.attributes.B}} Attributes</option>
+	  		<option value='{{priorities.attributes.C}}'>C: {{priorities.attributes.C}} Attributes</option>
+	  		<option value='{{priorities.attributes.D}}'>D: {{priorities.attributes.D}} Attributes</option>
+	  		<option value='{{priorities.attributes.E}}'>E: {{priorities.attributes.E}} Attributes</option>
 		</select>
 	</div>
 	<div class="form-group form-inline">
 		<label for="magic" class="col-sm-2 control-label">Magic</label>
-		<select class="form-control" id="magic">
-	  		<option value='24'>A: Magic 6, Two Rating 5 Magic Skills, 10 Spells</option>
-	  		<option value='20'>B: 20 Attributes</option>
-	  		<option value='16'>C: 16 Attributes</option>
-	  		<option value='14'>D: 14 Attributes</option>
-	  		<option value='12'>E: 12 Attributes</option>
+		<select class="form-control" id="priority-magic">
+	  		<option value='A'>A: Magician, Mystic Adept, Technomancer</option>
+	  		<option value='B'>B: Magician, Mystic Adept, Technomancer, Adept, Aspected Magician</option>
+	  		<option value='C'>C: Magician, Mystic Adept, Technomancer, Adept, Aspected Magician</option>
+	  		<option value='D'>D: Adept, Aspected Magician</option>
+	  		<option value='E'>E: No Magic</option>
 		</select>
 	</div>
 	<div class="form-group form-inline">
 		<label for="skills" class="col-sm-2 control-label">Skills</label>
-		<select class="form-control" id="skills">
-	  		<option value='24'>A: 24 Attributes</option>
-	  		<option value='20'>B: 20 Attributes</option>
-	  		<option value='16'>C: 16 Attributes</option>
-	  		<option value='14'>D: 14 Attributes</option>
-	  		<option value='12'>E: 12 Attributes</option>
+		<select class="form-control" id="priority-skills">
+	  		<option value='A'>A: 46 Skills/10 Skill Groups</option>
+	  		<option value='B'>B: 36 Skills/5 Skill Groups</option>
+	  		<option value='C'>C: 28 Skills/2 Skill Groups</option>
+	  		<option value='D'>D: 22 Skills/0 Skill Groups</option>
+	  		<option value='E'>E: 18 Skills/0 Skill Groups</option>
 		</select>
 	</div>
 	<div class="form-group form-inline">
 		<label for="resources" class="col-sm-2 control-label">Resources</label>
-		<select class="form-control" id="resources">
-	  		<option value='24'>A: 24 Attributes</option>
-	  		<option value='20'>B: 20 Attributes</option>
-	  		<option value='16'>C: 16 Attributes</option>
-	  		<option value='14'>D: 14 Attributes</option>
-	  		<option value='12'>E: 12 Attributes</option>
+		<select class="form-control" id="priority-resources">
+	  		<option value='A'>A: 450,000¥</option>
+	  		<option value='B'>B: 275,000¥</option>
+	  		<option value='C'>C: 140,000¥</option>
+	  		<option value='D'>D: 50,000¥</option>
+	  		<option value='E'>E: 6,0000¥</option>
 		</select>
 	</div>
 </form>	
