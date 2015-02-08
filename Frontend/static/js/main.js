@@ -23,6 +23,9 @@ $(function(){
 	$('.positive-quality-item').click(function(e){
 		desc = 'Karma: ' + $( this ).val() + '</br>' + $( this ).attr('description')
 		$('.quality-description').html(desc);
+		$('.positive-quality-item').removeClass('active');
+		$(this).addClass('active');
+
 	});
 });
 
