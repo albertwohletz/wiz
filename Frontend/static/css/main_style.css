@@ -2,8 +2,8 @@
 {
     display: none;
     width: 300px;
+    height: 300px;
     background: #e2e2e2; /* Old browsers */
-    bbackground: #e2e2e2; /* Old browsers */
     background: -moz-linear-gradient(top, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 100%, #fefefe 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e2e2e2), color-stop(50%,#dbdbdb), color-stop(100%,#d1d1d1), color-stop(100%,#fefefe)); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top, #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 100%,#fefefe 100%); /* Chrome10+,Safari5.1+ */
@@ -11,6 +11,7 @@
     background: -ms-linear-gradient(top, #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 100%,#fefefe 100%); /* IE10+ */
     background: linear-gradient(to bottom, #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 100%,#fefefe 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=0 ); /* IE6-9 */
+    padding: 10px;
 }
 
 .header
@@ -27,4 +28,12 @@
 
 .spinner{
     width:25px;
+}
+
+.no-pad{
+    padding: 0px; 
+}
+
+.positive-qualities{
+    overflow: scroll;
 }

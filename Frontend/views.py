@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from API import models
 
 # Create your views here.
 def home(request):
@@ -15,6 +16,8 @@ def home(request):
     		{'short': 'edg', 'full': 'Edge'}, 
     		{'short': 'mag', 'full': 'Magic'}, 
     		{'short': 'res', 'full': 'Resonance'}
-    	]
+    	],
+        'positive_qualities': models.PositiveQualities.objects.all()
     }
+
     return render(request, 'main.html', params)

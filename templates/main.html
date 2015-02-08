@@ -80,7 +80,7 @@
                         <ul class="nav nav-tabs">
                             <li class='nav-common'><a data-role="button" href="#">Common</a></li>
                             <li class='nav-skills'><a data-role="button" href="#">Skills</a></li>
-                        </ul>
+                        <                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      /ul>
                 </thead>
                 <tr><td>Primary Attributes</td><td>0 of 16</td></tr>
                 <tr><td>Special Attributes</td><td>0 of 16</td></tr>
@@ -99,5 +99,20 @@
         <!-- Karma Essence Nuyen -->
         <!-- Button to exchange karma to nuyen -->
         <div class="footer"></div>
+
+        <!-- Overlays -->
+        <div class='overlay positive-qualities'>
+            <div class='col-xs-6'>
+                <ul class="list-group">
+                {% for quality in positive_qualities %}
+                    <li class="list-group-item no-pad positive-quality-item" value={{quality.karma}} description="{{quality.description}}">{{quality.name}}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class='quality-description col-xs-6'>
+                
+            </div>
+        </div>
+            }
 	</body>
 </html>
