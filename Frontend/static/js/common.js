@@ -4,7 +4,8 @@ $(function(){
 		max: 10,
 		start: 1,
 		spin: function( event, ui ) {
-		    var sum=0;
+			set_attribute($(this).attr('id'), ui.value);
+			sum=0;
 			$('.attribute-spinner').each(function(){
 		    	sum += parseInt($(this).val() - $(this).attr('aria-valuemin'));
 			});

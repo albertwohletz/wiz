@@ -32,6 +32,20 @@ var summary_data={
 	'attributes_available': 16
 }
 
+var attributes={
+	'bod': {'base': 1, 'aug': 1},
+	'agi': {'base': 1, 'aug': 1},
+	'rea': {'base': 1, 'aug': 1},
+	'str': {'base': 1, 'aug': 1},
+	'cha': {'base': 1, 'aug': 1},
+	'int': {'base': 1, 'aug': 1},
+	'log': {'base': 1, 'aug': 1},
+	'wil': {'base': 1, 'aug': 1},
+	'edg': {'base': 1, 'aug': 1},
+	'mag': {'base': 1, 'aug': 1},
+	'res': {'base': 1, 'aug': 1}
+}
+
 function update_attributes(key, value){
 	summary_data[key] = value;
 	$('#summary-primary-attributes').html(summary_data['attributes_spent'] + ' of ' + summary_data['attributes_available']);
@@ -45,4 +59,12 @@ function update_attributes(key, value){
 
 function get_data(key){
 	return data[key];
+}
+
+function get_attribute(key){
+	return attributes[key];
+}
+function set_attribute(key, value){
+	attributes[key] = value;
+	$('.bod-val').html(value);
 }
