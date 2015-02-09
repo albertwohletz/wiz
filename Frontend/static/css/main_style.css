@@ -37,3 +37,6 @@
 .positive-qualities{
     overflow: scroll;
 }
+.popover{
+    width: 100%;
+}

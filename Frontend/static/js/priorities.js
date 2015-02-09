@@ -1,5 +1,6 @@
 // Priorities click handlers
 $(function(){
+	$('.meta').popover()
 	$(".priority").change(function(){
 		var sum = 0
 		$('.priority>option:selected').each(function(){ 
