@@ -1,7 +1,7 @@
 $(function(){
 	$( ".spinner" ).spinner({
 		min: 1,
-		max: 10,
+		max: 6,
 		start: 1,
 		spin: function( event, ui ) {
 			set_attribute($(this).attr('id'), ui.value);

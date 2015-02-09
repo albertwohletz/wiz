@@ -66,5 +66,5 @@ function get_attribute(key){
 }
 function set_attribute(key, value){
 	attributes[key] = value;
-	$('.bod-val').html(value);
+	$('.'+key+'-val').html(value);
 }
