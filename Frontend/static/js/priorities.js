@@ -1,6 +1,8 @@
 // Priorities click handlers
 $(function(){
-	$('.meta').popover({ trigger: "hover" })
+	$('.meta').popover({ trigger: "hover" });
+	$('.magic-type').popover({ trigger: "hover" });
+
 	$(".priority").change(function(){
 		var sum = 0
 		$('.priority>option:selected').each(function(){ 
@@ -50,6 +52,34 @@ $(function(){
 		update_skills('skills_available', val.split('/')[0]);
 		update_skills('skill_groups_available', val.split('/')[1]);
 	});
+
+	$('#priority-magic').change(function() {
+		var index = $('#priority-magic>option:selected').attr('index');
+
+		// Show/Hide Valid Metatypes
+		if (index == 4){
+			// Magician, Mystic Adept, Technomancer
+			$('.magic-type').addClass('disabled') 
+			$('.type-magician').removeClass('disabled')
+			$('.type-mystic-adept').removeClass('disabled')
+			$('.type-technomancer').removeClass('disabled')
+		} else if (index == 3){
+			// Any
+			$('.magic-type').removeClass('disabled') 
+		} else if (index == 2){
+			// Any
+			$('.magic-type').removeClass('disabled') 
+		}  else if (index == 1){
+			// Adept+Aspected Magician
+			$('.magic-type').addClass('disabled') 
+			$('.magic-adept').removeClass('disabled') 
+			$('.magic-aspected-magician').removeClass('disabled') 
+		} else {
+			// At least they won't geek you first
+			$('.meta').addClass('disabled') 
+			$('.meta-human').removeClass('disabled') 
+		}
+	});	
 
 	// Click new meta
 	$('.meta').click(function(){
