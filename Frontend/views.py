@@ -22,6 +22,22 @@ def home(request):
             'metatype': {},
             'attributes': {'A':24,'B':20,'C':16,'D':14,'E':12}
         },
+        'skill_groups': [
+            'Biotech', 
+            'Sorcery', 
+            'Influence', 
+            'Engineering', 
+            'Tasking', 
+            'Close Combat', 
+            'Stealth', 
+            'Firearms', 
+            'Cracking', 
+            'Outdoors', 
+            'Conjuring', 
+            'Electronics', 
+            'Athletics', 
+            'Enchanting'
+        ]
     }
  
     from collections import OrderedDict

@@ -1,5 +1,5 @@
 $(function(){
-	$( ".spinner" ).spinner({
+	$( ".attribute-spinner" ).spinner({
 		min: 1,
 		max: 6,
 		start: 1,

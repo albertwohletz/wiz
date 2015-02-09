@@ -12,6 +12,7 @@
         <script src={% static 'js/main.js' %}></script>
         <script src={% static 'js/priorities.js' %}></script>
         <script src={% static 'js/common.js' %}></script>
+        <script src={% static 'js/skills.js' %}></script>
 	</head>
 	<body>
         <!-- nav buttons -->
@@ -35,6 +36,7 @@
                 <!-- Tab Content -->
                 {% include 'priorities.html' %}
                 {% include 'common.html' %}
+                {% include 'skills.html' %}
             </div>
         </div>
 
@@ -47,18 +49,21 @@
                             <li class='nav-skills'><a data-role="button" href="#">Skills</a></li>
                         </ul>                                                                                                    
                 </thead>
-                <tr><td>Primary Attributes</td><td id='summary-primary-attributes'>0 of 16</td></tr>
-                <tr><td>Special Attributes</td><td id='summary-special-attributes'>0 of 16</td></tr>
-                <tr><td>Positive Qualities</td><td id='summary-positive-qualities'>0 of 16</td></tr>
-                <tr><td>Negative Qualities</td><td td='summary-negative-qualities'>0 of 16</td></tr>
-                <tr><td>Nuyen</td><td id='summary-nuyen'>0 of 16</td></tr>
-                <tr><td>Skill Groups</td><td id='summary-groups'>0 of 16</td></tr>
-                <tr><td>Active Skills</td><td id='summary-skills'>0 of 16</td></tr>
-                <tr><td>Knowledge Skills</td><td id='summary-knowledge'>0 of 16</td></tr>
-                <tr><td>Spells</td><td id='summary-spells'>0 of 16</td></tr>
-                <tr><td>Complex Forms</td><td id='summary-forms'>0 of 16</td></tr>
-                <tr><td>Essence</td><td id='summary-essence'>0 of 16</td></tr>
-                <tr><td>Contacts</td><td id='summary-contacts'>0 of 16</td></tr>
+                <tr><td>Priorities</td><td id='summary-priorities'>0 of 10</td></tr>
+                <tr><td>Primary Attributes</td><td id='summary-primary-attributes'>0 of 12</td></tr>
+                <tr><td>Special Attributes</td><td id='summary-special-attributes'>0 of 1</td></tr>
+                <tr><td>Positive Qualities</td><td id='summary-positive-qualities'>0</td></tr>
+                <tr><td>Negative Qualities</td><td td='summary-negative-qualities'>0</td></tr>
+                <tr><td>Nuyen</td><td id='summary-nuyen'>0</td></tr>
+                <tr><td>Skill Groups</td><td id='summary-groups'>0 of 0</td></tr>
+                <tr><td>Active Skills</td><td id='summary-skills'>0 of 18</td></tr>
+                <tr><td>Knowledge Skills</td><td id='summary-knowledge'>0 of 0</td></tr>
+                <tr><td>Spells</td><td id='summary-spells'>0 of 0</td></tr>
+                <tr><td>Complex Forms</td><td id='summary-forms'>0 of 0</td></tr>
+                <tr><td>Essence</td><td id='summary-essence'>6 of 6</td></tr>
+                <tr><td>Contacts</td><td id='summary-contacts'>0 of 0</td></tr>
+                <tr><td>Karma</td><td id='summary-contacts'>0 of 25</td></tr>
+                <tr><td>Contacts</td><td id='summary-contacts'>0 of 0</td></tr>
             </table>
         </div>
         <!-- Karma Essence Nuyen -->

@@ -1,0 +1,40 @@
+<div role="tabpanel" class="tab-pane" id="skills">
+	<div class='col-xs-4'>
+		<table class='table'>
+			<thead>
+				<tr>
+					<th>Skill Groups</th>
+					<th>Points</th>
+					<th>Karma</th>
+				</tr>
+			</thead>
+			{% for skill in skill_groups %}
+			<tr>
+				<td>{{skill}}</td>
+	            <td class='group-{{skill}}-base'><input class="spinner group-spinner" value="1"></td>
+	            <td class='group-{{skill}}-karma'><input class="spinner group-karma-spinner" value="0"></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	<div class='col-xs-8'>
+		<table class='table'>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Attribute</th>
+					<th>Points</th>
+					<th>Karma</th>
+				</tr>
+			</thead>
+			{% for skill in skills %}
+			<tr class='{{skill.skillgroup}}'>
+				<td>{{skill.name}}</td>
+				<td>{{skill.attribute}}</td>
+	            <td class='skill-{{skill.id}}-base'><input class="spinner skill-spinner" value="1"></td>
+	            <td class='skill-{{skill.id}}-karma'><input class="spinner skill-karma-spinner" value="0"></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+</div>
