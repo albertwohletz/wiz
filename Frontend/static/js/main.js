@@ -105,3 +105,7 @@ function set_attribute(key, value){
 	attributes[key] = value;
 	$('.'+key+'-val').html(value);
 }
+function increment_base(key, value){
+	attributes[key]['base'] += value;
+	$('.'+key+'-val').html(value);
+}

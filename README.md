@@ -50,3 +50,7 @@ Some qualities do not let you apply the rating, instead take them multiple times
 Screen Shots
 =============
 ![First Screenshot](http://i.imgur.com/lVgW5Aq.png "First Screenshot, shows you what planned look/feel is like")
+
+Todo
+========
+Edge from metatype priority selection
