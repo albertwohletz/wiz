@@ -54,3 +54,4 @@ Screen Shots
 Todo
 ========
 Edge from metatype priority selection
+Metatype doesn't really do anything.
