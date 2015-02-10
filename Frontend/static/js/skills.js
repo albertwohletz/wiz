@@ -12,6 +12,14 @@ $(function(){
 			update_skills('skills_spent', sum);
       	}
 	});
+	$( ".group-spinner").spinner({
+		spin: function( event, ui ){
+			alert('daoeu')
+			alert(ui.id);
+		}
+	});
+	$( ".group-karma-spinner").spinner();
+
 	$( ".group-spinner" ).spinner({
 		min: 1,
 		max: 6,

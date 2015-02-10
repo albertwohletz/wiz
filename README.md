@@ -53,5 +53,7 @@ Screen Shots
 
 Todo
 ========
+Skill Groups mouseover shows skills.  Also adding skill groups gives you skills.
+
 Edge from metatype priority selection
 Metatype doesn't really do anything.
