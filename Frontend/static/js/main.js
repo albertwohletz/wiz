@@ -15,28 +15,16 @@ $(function() {
 $(function(){
 	// Qualities Functios
 	$('.add-qualities').click(function(){
-		$('.positive-qualities').show();
+		$('.qualities').show();
 	});
-	$('.positive-quality-item').click(function(e){
+	$('.quality-item').click(function(e){
 		desc = 'Karma: ' + $( this ).val() + '</br>' + $( this ).attr('description')
 		$('.quality-description').html(desc);
-		$('.positive-quality-item').removeClass('active');
+		$('.quality-item').removeClass('active');
 		$(this).addClass('active');
 	});	
 });
 
-
-
-var summary_data={
-	'priorities_spent': 0,
-	'priorities_available': 16,
-	'attributes_spent': 0,
-	'attributes_available': 16,
-	'skills_spent': 0,
-	'skills_available': 16,
-	'skill_groups_spent': 0,
-	'skill_groups_available': 10,
-}
 
 var attributes={
 	'bod': {'base': 1, 'aug': 1},
@@ -51,6 +39,23 @@ var attributes={
 	'mag': {'base': 1, 'aug': 1},
 	'res': {'base': 1, 'aug': 1}
 }
+
+var summary_data={
+	'priorities_spent': 0,
+	'priorities_available': 16,
+	'attributes_spent': 0,
+	'attributes_available': 16,
+	'skills_spent': 0,
+	'skills_available': 16,
+	'skill_groups_spent': 0,
+	'skill_groups_available': 10,
+	'karma': 25,
+	'attributes': attributes,
+	'positive-qualities': [],
+	'negative-qualities': [],
+	'skills': []
+}
+
 
 
 function update_attributes(key, value){
@@ -108,4 +113,30 @@ function set_attribute(key, value){
 function increment_base(key, value){
 	attributes[key]['base'] += value;
 	$('.'+key+'-val').html(value);
+}
+
+function change_karma(delta){
+	summary_data['karma'] += delta;
+
+	$('#summary-karma').html(summary_data['karma']);
+
+	if (summary_data['karma'] > 0) {
+		$('#summary-karma').parent().removeClass('danger');
+		$('#summary-karma').parent().removeClass('success');
+	} else if (summary_data['karma'] == 0){
+		$('#summary-karma').parent().removeClass('danger');
+		$('#summary-karma').parent().addClass('success');
+	} else {
+		$('#summary-karma').parent().addClass('danger');
+		$('#summary-karma').parent().removeClass('success');
+	}
+}
+
+function add_quality(name, karma){
+	if (karma >= 0) {
+		summary_data['positive-qualities'][summary_data['positive-qualities'].length] = {'name': name, 'karma': karma}
+	} else {
+		summary_data['negative-qualities'][summary_data['positive-qualities'].length] = {'name': name, 'karma': karma}
+	}
+	change_karma(-1 * karma);
 }

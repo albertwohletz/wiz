@@ -62,40 +62,11 @@
                 <tr><td>Complex Forms</td><td id='summary-forms'>0 of 0</td></tr>
                 <tr><td>Essence</td><td id='summary-essence'>6 of 6</td></tr>
                 <tr><td>Contacts</td><td id='summary-contacts'>0 of 0</td></tr>
-                <tr><td>Karma</td><td id='summary-contacts'>25</td></tr>
-                <tr><td>Contacts</td><td id='summary-contacts'>0 of 0</td></tr>
+                <tr><td>Karma</td><td id='summary-karma'>25</td></tr>
             </table>
         </div>
         <!-- Karma Essence Nuyen -->
         <!-- Button to exchange karma to nuyen -->
         <div class="footer"></div>
-
-        <!-- Overlays -->
-        <div class="modal fade" id='qualities-modal'>
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class='positive-qualities'>
-                            <div class='col-xs-6'>
-                                <ul class="list-group qualities-list">
-                                {% for quality in positive_qualities %}
-                                    <li class="list-group-item no-pad positive-quality-item" value={{quality.karma}} description="{{quality.description}}">{{quality.name}}</li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                            <div class='col-xs-6'>
-                                <div class='quality-description'>
-                                </div>
-                                <ul class="nav nav-tabs">
-                                    <li class='nav-cancel'><a data-role="button" href="#">Cancel</a></li>
-                                    <li class='nav-add-close'><a data-role="button" href="#">Add</a></li>
-                                    <li class='nav-add'><a data-role="button" href="#">Add & More</a></li>
-                                </ul>   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 	</body>
 </html>
