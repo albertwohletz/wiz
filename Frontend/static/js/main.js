@@ -139,4 +139,5 @@ function add_quality(name, karma){
 		summary_data['negative-qualities'][summary_data['positive-qualities'].length] = {'name': name, 'karma': karma}
 	}
 	change_karma(-1 * karma);
+	$('.active-qualities-list').html($('.active-qualities-list').html()+"<ul>"+name+"</ul>")
 }
