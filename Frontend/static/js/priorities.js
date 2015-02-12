@@ -116,7 +116,7 @@ $(function(){
 		$('.magic-type.active').removeClass('active');
 		$(this).addClass('active');
 
-		
+
 	});
 
 	// Click new meta
@@ -124,27 +124,46 @@ $(function(){
 		if ($(this).hasClass('disabled')) {
 			return;
 		}
-
-		// Remove Stats from old meta
-		old = $('.meta>class:active')
-		if (old.hasClass('meta-human')) {
-
-		} else if (old.hasClass('meta-elf')) {
-			increment_base('agi', -2)
-			increment_base('cha', -2)
-		} else if (old.hasClass('meta-dwarf')) {
-			increment_base('bod', -2)
-			increment_base('str', -2)
-			increment_base('wil', -1)
-			increment_base('rea', 1)
-		} else if (old.hasClass('meta-ork')) {
-
-		} else if (old.hasClass('meta-troll')) {
-
-		}
-
-		// Activate button
-		$('.meta').removeClass('active')
-		$(this).addClass('active')
+		$('.meta.active').removeClass('active');
+		$(this).addClass('active');
+		set_race($(this).val());
 	});
 });
+
+var races = {
+	'human': {'edg': 1},
+	'elf': {'agi': 1, 'cha': 2},
+	'dwarf': {'bod': 2, 'str': 2, 'wil': 1, 'rea': -1},
+	'ork': {'bod': 3, 'str': 2, 'log': -1, 'cha': -1},
+	'troll': {'bod': 4, 'str': 4, 'agi': -1, 'int': -1, 'log': -1, 'cha': -2}
+}
+
+// Swap Races
+function set_race(race_name){
+	remove_race();
+	summary_data['race'] = race_name;
+
+	for (attribute in races[race_name]){
+		increment_base(attribute, races[race_name][attribute]);
+	}
+
+	// Update Params
+	$('#bod').val(attributes['bod']['base']);
+	$('#agi').val(attributes['agi']['base']);
+	$('#rea').val(attributes['rea']['base']);
+	$('#str').val(attributes['str']['base']);
+	$('#cha').val(attributes['cha']['base']);
+	$('#int').val(attributes['int']['base']);
+	$('#log').val(attributes['log']['base']);
+	$('#wil').val(attributes['wil']['base']);
+	$('#edg').val(attributes['edg']['base']);
+	$('#mag').val(attributes['mag']['base']);
+	$('#res').val(attributes['res']['base']);
+}
+
+function remove_race(){
+	race_name = summary_data['race']
+	for (attribute in races[race_name]){
+		increment_base(attribute, -1 * races[race_name][attribute]);
+	}
+}

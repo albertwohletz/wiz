@@ -12,13 +12,5 @@ $(function(){
 			update_attributes('attributes_spent', sum);
       	}
 	});
-	// Update attributes when moving spinner
-	$('.attribute-spinner').change(function(){
-		var sum=0;
-		$('.attribute-spinner').each(function(){
-	    	sum += parseInt($(this).val());
-		});
-		update_attributes('attributes_spent', sum);
-	});
 	$('.karma-spinner').spinner();
 });

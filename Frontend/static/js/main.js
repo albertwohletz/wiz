@@ -25,7 +25,6 @@ $(function(){
 	});	
 });
 
-
 var attributes={
 	'bod': {'base': 1, 'aug': 1},
 	'agi': {'base': 1, 'aug': 1},
@@ -35,7 +34,7 @@ var attributes={
 	'int': {'base': 1, 'aug': 1},
 	'log': {'base': 1, 'aug': 1},
 	'wil': {'base': 1, 'aug': 1},
-	'edg': {'base': 1, 'aug': 1},
+	'edg': {'base': 1},
 	'mag': {'base': 1, 'aug': 1},
 	'res': {'base': 1, 'aug': 1}
 }
@@ -52,7 +51,8 @@ var summary_data={
 	'karma': 25,
 	'attributes': attributes,
 	'qualities': [],
-	'skills': []
+	'skills': [],
+	'race': '',
 }
 
 
@@ -105,7 +105,7 @@ function get_attribute(key){
 	return attributes[key];
 }
 function set_attribute(key, value){
-	attributes[key] = value;
+	attributes[key]['base'] = value;
 	$('.'+key+'-val').html(value);
 }
 function increment_base(key, value){
@@ -145,3 +145,7 @@ function remove_quality(id){
 	change_karma(karma);
 }
 
+// Initialize
+$(function(){ 
+	set_race('human');
+});
