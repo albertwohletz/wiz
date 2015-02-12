@@ -60,3 +60,4 @@ Todo
 Skill Groups mouseover shows skills.  Also adding skill groups gives you skills.
 
 Edge from metatype priority selection
+Min max spinners

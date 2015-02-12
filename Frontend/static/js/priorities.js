@@ -110,12 +110,12 @@ $(function(){
 			$('.type-aspected-magician').attr('data-content', '');
 		}
 	});	
-
 	// Magic type toggle
 	$('.magic-type').click(function(){
 		$('.magic-type.active').removeClass('active');
 		$(this).addClass('active');
-
+		var index = $('#priority-magic>option:selected').attr('index');
+		set_magic(index, $(this).val())
 
 	});
 
@@ -129,6 +129,57 @@ $(function(){
 		set_race($(this).val());
 	});
 });
+
+var magic_values = [{
+		"magician": {'mag': 0, 'res': 0},
+		"adept": {'mag': 0, 'res': 0},
+		"mystic-adept": {'mag': 0, 'res': 0},
+		"aspected-magician": {'mag': 0, 'res': 0},
+		"technomancer": {'mag': 0, 'res': 0},
+		"none": {'mag': 0, 'res': 0}
+	}, {
+		"magician": {'mag': 0, 'res': 0},
+		"adept": {'mag': 2, 'res': 0},
+		"mystic-adept": {'mag': 0, 'res': 0},
+		"aspected-magician": {'mag': 2, 'res': 0},
+		"technomancer": {'mag': 0, 'res': 0},
+		"none": {'mag': 0, 'res': 0}
+	}, {
+		"magician": {'mag': 3, 'res': 0},
+		"adept": {'mag': 4, 'res': 0},
+		"mystic-adept": {'mag': 3, 'res': 0},
+		"aspected-magician": {'mag': 3, 'res': 0},
+		"technomancer": {'mag': 0, 'res': 3},
+		"none": {'mag': 0, 'res': 0}
+	}, {
+		"magician": {'mag': 4, 'res': 0},
+		"adept": {'mag': 6, 'res': 0},
+		"mystic-adept": {'mag': 4, 'res': 0},
+		"aspected-magician": {'mag': 5, 'res': 0},
+		"technomancer": {'mag': 0, 'res': 4},
+		"none": {'mag': 0, 'res': 0}
+	}, {
+		"magician": {'mag': 6, 'res': 0},
+		"adept": {'mag': 0, 'res': 0},
+		"mystic-adept": {'mag': 6, 'res': 0},
+		"aspected-magician": {'mag': 0, 'res': 0},
+		"technomancer": {'mag': 0, 'res': 6},
+		"none": {'mag': 0, 'res': 0}
+	}
+];
+
+function set_magic(index, name){
+	// Remove Old
+	for (attribute in summary_data['magic']){
+		increment_base(attribute, summary_data['magic'][attribute]);
+	}	
+	// Add new
+	var magic = magic_values[index][name];
+	for (attribute in magic){
+		increment_base(attribute, magic[attribute]);
+	}
+	summary_data['magic'] = magic;
+}
 
 var races = {
 	'human': {'edg': 1},
@@ -146,19 +197,6 @@ function set_race(race_name){
 	for (attribute in races[race_name]){
 		increment_base(attribute, races[race_name][attribute]);
 	}
-
-	// Update Params
-	$('#bod').val(attributes['bod']['base']);
-	$('#agi').val(attributes['agi']['base']);
-	$('#rea').val(attributes['rea']['base']);
-	$('#str').val(attributes['str']['base']);
-	$('#cha').val(attributes['cha']['base']);
-	$('#int').val(attributes['int']['base']);
-	$('#log').val(attributes['log']['base']);
-	$('#wil').val(attributes['wil']['base']);
-	$('#edg').val(attributes['edg']['base']);
-	$('#mag').val(attributes['mag']['base']);
-	$('#res').val(attributes['res']['base']);
 }
 
 function remove_race(){

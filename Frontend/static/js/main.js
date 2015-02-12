@@ -34,9 +34,9 @@ var attributes={
 	'int': {'base': 1, 'aug': 1},
 	'log': {'base': 1, 'aug': 1},
 	'wil': {'base': 1, 'aug': 1},
-	'edg': {'base': 1},
-	'mag': {'base': 1, 'aug': 1},
-	'res': {'base': 1, 'aug': 1}
+	'edg': {'base': 1, 'aug': 1},
+	'mag': {'base': 0, 'aug': 0},
+	'res': {'base': 0, 'aug': 0}
 }
 
 var summary_data={
@@ -53,6 +53,7 @@ var summary_data={
 	'qualities': [],
 	'skills': [],
 	'race': '',
+	'magic': {'mag': 0, 'res': 0}
 }
 
 
@@ -111,6 +112,7 @@ function set_attribute(key, value){
 function increment_base(key, value){
 	attributes[key]['base'] += value;
 	$('.'+key+'-val').html(attributes[key]['base']);
+	$('#'+key).html(attributes[key]['base']);
 }
 
 function change_karma(delta){
@@ -148,4 +150,8 @@ function remove_quality(id){
 // Initialize
 $(function(){ 
 	set_race('human');
+
+	for (att in attributes){
+		increment_base(att, 0);
+	}
 });
