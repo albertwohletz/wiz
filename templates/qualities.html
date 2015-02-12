@@ -1,0 +1,43 @@
+<div class="modal fade" id='qualities-modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class='qualities'>
+                    <div class='col-xs-8'>
+                        <div role="tabpanel">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#positive" aria-controls="positive" role="tab" data-toggle="tab">Positive Qualities</a></li>
+                                <li role="presentation"><a href="#negative" aria-controls="negative" role="tab" data-toggle="tab">Negative Qualities</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="positive">
+                                <ul class="list-group qualities-list" id="positive">
+                                {% for quality in positive_qualities %}
+                                    <li class="list-group-item no-pad quality-item" value={{quality.karma}} description="{{quality.description}}">{{quality.name}}</li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="negative">
+                                <ul class="list-group qualities-list" id="negative">
+                                {% for quality in negative_qualities %}
+                                    <li class="list-group-item no-pad quality-item" value={{quality.karma}} description="{{quality.description}}">{{quality.name}}</li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-xs-4'>
+                        <div class='quality-description'>
+                        </div>
+                        <ul class="nav nav-tabs">
+                            <li class='nav-cancel'><a data-role="button" href="#">Cancel</a></li>
+                            <li class='nav-add-quality'><a data-role="button" href="#">Add</a></li>
+                        </ul>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
