@@ -51,8 +51,7 @@ var summary_data={
 	'skill_groups_available': 10,
 	'karma': 25,
 	'attributes': attributes,
-	'positive-qualities': [],
-	'negative-qualities': [],
+	'qualities': [],
 	'skills': []
 }
 
@@ -132,11 +131,17 @@ function change_karma(delta){
 }
 
 function add_quality(name, karma){
-	if (karma >= 0) {
-		summary_data['positive-qualities'][summary_data['positive-qualities'].length] = {'name': name, 'karma': karma}
-	} else {
-		summary_data['negative-qualities'][summary_data['positive-qualities'].length] = {'name': name, 'karma': karma}
-	}
+	length = summary_data['qualities'].length;
+	summary_data['qualities'][length] = {'name': name, 'karma': karma};
 	change_karma(-1 * karma);
-	$('.active-qualities-list').html($('.active-qualities-list').html()+"<ul>"+name+"</ul>")
+
+	return $('.active-qualities-list').html($('.active-qualities-list').html()+"<li id=quality" + length + " class='list-group-item attached-quality'>"+name+"</li>");
 }
+
+function remove_quality(id){
+	karma = summary_data["qualities"][id]['karma'];
+	summary_data["qualities"][id] = {};
+	$('.quality').addClass('hidden');
+	change_karma(karma);
+}
+

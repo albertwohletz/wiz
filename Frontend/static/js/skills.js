@@ -14,8 +14,6 @@ $(function(){
 	});
 	$( ".group-spinner").spinner({
 		spin: function( event, ui ){
-			alert('daoeu')
-			alert(ui.id);
 		}
 	});
 	$( ".group-karma-spinner").spinner();
