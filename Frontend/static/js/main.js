@@ -110,7 +110,7 @@ function set_attribute(key, value){
 }
 function increment_base(key, value){
 	attributes[key]['base'] += value;
-	$('.'+key+'-val').html(value);
+	$('.'+key+'-val').html(attributes[key]['base']);
 }
 
 function change_karma(delta){
