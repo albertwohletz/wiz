@@ -51,6 +51,10 @@ Some qualities do not let you apply the rating, instead take them multiple times
 Screen Shots
 =============
 ![First Screenshot](http://i.imgur.com/lVgW5Aq.png "First Screenshot, shows you what planned look/feel is like")
+![Screenshot](http://i.imgur.com/3tx9WU4.png)
+![Screenshot](http://i.imgur.com/bVmhU16.png)
+![Screenshot](http://i.imgur.com/rB4pXaq.png)
+![Screenshot](http://i.imgur.com/Ds80jdX.png)
 
 Todo
 ========
