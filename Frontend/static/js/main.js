@@ -98,7 +98,6 @@ function update_skills(key, value){
 	}
 }
 
-
 function get_data(key){
 	return data[key];
 }

@@ -41,31 +41,5 @@
     </div>
 
     <!-- Overlays -->
-    <div class="modal fade" id='qualities-modal'>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class='qualities'>
-                        <div class='col-xs-6'>
-                            <a data-role="button" href="#">Positive Qualities</a>
-                            <a data-role="button" href="#">Negative Qualities</a>
-                            <ul class="list-group qualities-list positive">
-                            {% for quality in positive_qualities %}
-                                <li class="list-group-item no-pad quality-item" value={{quality.karma}} description="{{quality.description}}">{{quality.name}}</li>
-                            {% endfor %}
-                            </ul>
-                        </div>
-                        <div class='col-xs-6'>
-                            <div class='quality-description'>
-                            </div>
-                            <ul class="nav nav-tabs">
-                                <li class='nav-cancel'><a data-role="button" href="#">Cancel</a></li>
-                                <li class='nav-add-quality'><a data-role="button" href="#">Add</a></li>
-                            </ul>   
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'qualities.html' %}
 </div>

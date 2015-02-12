@@ -21,11 +21,4 @@ $(function(){
 		update_attributes('attributes_spent', sum);
 	});
 	$('.karma-spinner').spinner();
-
-	// Add
-	$('.nav-add-quality').click(function(){
-		karma = $('.quality-item.active').val()
-		quality_name = $('.quality-item.active').html()
-		add_quality(quality_name, karma);
-	});
 });

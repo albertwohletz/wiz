@@ -9,6 +9,7 @@ Common
 --------
 This lets you set Attributes, Positive Qualities, and Contacts.
 Shows Limits? (Or put these on skills?)
+Prob add limits here for sure
 
 
 Skills

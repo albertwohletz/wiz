@@ -18,7 +18,7 @@ def home(request):
     		{'short': 'res', 'full': 'Resonance'}
     	],
         'positive_qualities': models.PositiveQualities.objects.all(),
-        'negative_qualities': {},
+        'negative_qualities': models.NegativeQualities.objects.all(),
         'priorities': {
             'metatype': {},
             'attributes': {'A':24,'B':20,'C':16,'D':14,'E':12}

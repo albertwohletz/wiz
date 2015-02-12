@@ -6,6 +6,11 @@ class PositiveQualities(models.Model):
     karma = models.IntegerField()
     description = models.CharField(max_length=200)
 
+class NegativeQualities(models.Model):
+    name = models.CharField(max_length=200)
+    karma = models.IntegerField()
+    description = models.CharField(max_length=200)
+
 class Skills(models.Model):
 	name = models.CharField(max_length=50)
 	attribute = models.CharField(max_length=3)
