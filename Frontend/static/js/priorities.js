@@ -111,6 +111,14 @@ $(function(){
 		}
 	});	
 
+	// Magic type toggle
+	$('.magic-type').click(function(){
+		$('.magic-type.active').removeClass('active');
+		$(this).addClass('active');
+
+		
+	});
+
 	// Click new meta
 	$('.meta').click(function(){
 		if ($(this).hasClass('disabled')) {
