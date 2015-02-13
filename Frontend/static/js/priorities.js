@@ -128,6 +128,10 @@ $(function(){
 		$(this).addClass('active');
 		set_race($(this).val());
 	});
+
+	$('#priority-resources').change(function(){
+		set_nuyen($(this).val())
+	});
 });
 
 var magic_values = [{
@@ -204,4 +208,10 @@ function remove_race(){
 	for (attribute in races[race_name]){
 		increment_base(attribute, -1 * races[race_name][attribute]);
 	}
+}
+
+var old_nuyen = 6000;
+function set_nuyen(nuyen){
+	modify_summary_data('nuyen', nuyen - old_nuyen);
+	old_nuyen = nuyen;
 }

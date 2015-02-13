@@ -53,7 +53,8 @@ var summary_data={
 	'qualities': [],
 	'skills': [],
 	'race': '',
-	'magic': {'mag': 0, 'res': 0}
+	'magic': {'mag': 0, 'res': 0},
+	'nuyen': 6000
 }
 
 
@@ -147,6 +148,27 @@ function remove_quality(id){
 	change_karma(karma);
 }
 
+function modify_summary_data(key, delta){
+	summary_data[key] += parseInt(delta);
+
+	var html_element = $('#summary-'+key);
+
+	// Set html element to show new value
+	html_element.html(summary_data[key]);
+
+	// Update Color
+	if (summary_data[key] > 0) {
+		html_element.parent().removeClass('danger');
+		html_element.parent().removeClass('success');
+	} else if (summary_data[key] == 0){
+		html_element.parent().removeClass('danger');
+		html_element.parent().addClass('success');
+	} else {
+		html_element.parent().addClass('danger');
+		html_element.parent().removeClass('success');
+	}
+}
+
 // Initialize
 $(function(){ 
 	set_race('human');
@@ -155,3 +177,4 @@ $(function(){
 		increment_base(att, 0);
 	}
 });
+
