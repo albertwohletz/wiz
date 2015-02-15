@@ -116,36 +116,10 @@ function increment_base(key, value){
 	$('#'+key).html(attributes[key]['base']);
 }
 
-function change_karma(delta){
-	summary_data['karma'] += delta;
 
-	$('#summary-karma').html(summary_data['karma']);
-
-	if (summary_data['karma'] > 0) {
-		$('#summary-karma').parent().removeClass('danger');
-		$('#summary-karma').parent().removeClass('success');
-	} else if (summary_data['karma'] == 0){
-		$('#summary-karma').parent().removeClass('danger');
-		$('#summary-karma').parent().addClass('success');
-	} else {
-		$('#summary-karma').parent().addClass('danger');
-		$('#summary-karma').parent().removeClass('success');
-	}
-}
-
-function add_quality(name, karma){
-	length = summary_data['qualities'].length;
-	summary_data['qualities'][length] = {'name': name, 'karma': karma};
-	change_karma(-1 * karma);
-
-	return $('.active-qualities-list').html($('.active-qualities-list').html()+"<li id=quality" + length + " class='list-group-item attached-quality'>"+name+"</li>");
-}
-
-function remove_quality(id){
-	karma = summary_data["qualities"][id]['karma'];
-	summary_data["qualities"][id] = {};
-	$('.quality').addClass('hidden');
-	change_karma(karma);
+function set_summary_data(key, value){
+	delta = value - summary_data[key];
+	modify_summary_data(key, delta)
 }
 
 function modify_summary_data(key, delta){
@@ -167,6 +141,21 @@ function modify_summary_data(key, delta){
 		html_element.parent().addClass('danger');
 		html_element.parent().removeClass('success');
 	}
+}
+
+function add_quality(name, karma){
+	length = summary_data['qualities'].length;
+	summary_data['qualities'][length] = {'name': name, 'karma': karma};
+	modify_summary_data('karma', -1*karma);
+
+	return $('.active-qualities-list').html($('.active-qualities-list').html()+"<li id=quality" + length + " class='list-group-item attached-quality'>"+name+"</li>");
+}
+
+function remove_quality(id){
+	karma = summary_data["qualities"][id]['karma'];
+	summary_data["qualities"][id] = {};
+	$('.quality').addClass('hidden');
+	modify_summary_data('karma', karma);
 }
 
 // Initialize
