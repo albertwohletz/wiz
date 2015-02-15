@@ -12,5 +12,13 @@ $(function(){
 			update_attributes('attributes_spent', sum);
       	}
 	});
+	$( ".special-spinner" ).spinner({
+		min: 0,
+		max: 6,
+		start: 0,
+		spin: function( event, ui ) {
+			modify_summary_data('special-attributes', ui.value);
+      	}
+	});
 	$('.karma-spinner').spinner();
 });

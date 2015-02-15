@@ -27,7 +27,7 @@
             {% for att in attributes %}
             <tr>
                 <td>{{att.full}}</td>
-                <td class='{{att.short}}-base'><input id='{{att.short}}' class="spinner attribute-spinner" value="1"></td>
+                <td class='{{att.short}}-base'><input id='{{att.short}}' class="spinner {{att.type}}-spinner" value="1"></td>
                 <td class='{{att.short}}-karma'><input class="spinner karma-spinner" value="0"></td>
                 <td class='{{att.short}}-val'>1</td>
                 <td class='{{att.short}}-limit'>6(10)</td>

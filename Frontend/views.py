@@ -5,24 +5,20 @@ from API import models
 def home(request):
     params = {
     	'attributes': [
-    		{'short': 'bod', 'full': 'Body'}, 
-    		{'short': 'agi', 'full': 'Agility'}, 
-    		{'short': 'rea', 'full': 'Reaction'}, 
-    		{'short': 'str', 'full': 'Strength'}, 
-    		{'short': 'cha', 'full': 'Charisma'}, 
-    		{'short': 'int', 'full': 'Intuition'}, 
-    		{'short': 'log', 'full': 'Logic'}, 
-    		{'short': 'wil', 'full': 'Willpower'}, 
-    		{'short': 'edg', 'full': 'Edge'}, 
-    		{'short': 'mag', 'full': 'Magic'}, 
-    		{'short': 'res', 'full': 'Resonance'}
+    		{'short': 'bod', 'full': 'Body', 'type': 'attribute'}, 
+    		{'short': 'agi', 'full': 'Agility', 'type': 'attribute'},
+    		{'short': 'rea', 'full': 'Reaction', 'type': 'attribute'}, 
+    		{'short': 'str', 'full': 'Strength', 'type': 'attribute'}, 
+    		{'short': 'cha', 'full': 'Charisma', 'type': 'attribute'}, 
+    		{'short': 'int', 'full': 'Intuition', 'type': 'attribute'}, 
+    		{'short': 'log', 'full': 'Logic', 'type': 'attribute'}, 
+    		{'short': 'wil', 'full': 'Willpower', 'type': 'attribute'}, 
+    		{'short': 'edg', 'full': 'Edge', 'type': 'special'}, 
+    		{'short': 'mag', 'full': 'Magic', 'type': 'special'}, 
+    		{'short': 'res', 'full': 'Resonance', 'type': 'special'}
     	],
         'positive_qualities': models.PositiveQualities.objects.all(),
         'negative_qualities': models.NegativeQualities.objects.all(),
-        'priorities': {
-            'metatype': {},
-            'attributes': {'A':24,'B':20,'C':16,'D':14,'E':12}
-        },
         'skill_groups': [
             'Biotech', 
             'Sorcery', 
