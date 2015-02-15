@@ -42,6 +42,16 @@ $(function(){
 			$('.meta').addClass('disabled') 
 			$('.meta-human').removeClass('disabled') 
 		}
+
+		// If existing choice invalid, change to human
+		if ($('.meta.active').hasClass('disabled')){
+			$('.meta.active').removeClass('active');
+			$('.meta-human').addClass('active');
+			set_race('human');
+		}
+
+		summary_data['special_attributes_available'] = race_values[index][summary_data['race']];
+		$('#summary-special-attributes').html(summary_data['special_attributes_spent'] + ' of ' + summary_data['special_attributes_available']);
 	});	
 
 	$('#priority-attributes').change(function() {
