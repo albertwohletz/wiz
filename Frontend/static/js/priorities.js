@@ -185,6 +185,31 @@ function set_magic(index, name){
 	summary_data['magic'] = magic;
 }
 
+var race_values = [{
+		"human": 1,
+	}, {
+		"human": 3,
+		"elf": 0,
+	}, { 
+		"human": 5,
+		"elf": 3,
+		"dwarf": 1,
+		"ork": 0
+	}, {
+		"human": 7,
+		"elf": 6,
+		"dwarf": 4,
+		"ork": 4,
+		"troll": 0
+	}, {
+		"human": 9,
+		"elf": 8,
+		"dwarf": 7,
+		"ork": 7,
+		"troll": 5
+	}
+];
+
 var races = {
 	'human': {'edg': 1},
 	'elf': {'agi': 1, 'cha': 2},
@@ -201,6 +226,10 @@ function set_race(race_name){
 	for (attribute in races[race_name]){
 		increment_base(attribute, races[race_name][attribute]);
 	}
+
+	var index = $('#priority-metatype>option:selected').attr('index');
+	summary_data['special_attributes_available'] = race_values[index][race_name];
+	$('#summary-special-attributes').html(summary_data['special_attributes_spent'] + ' of ' + summary_data['special_attributes_available']);
 }
 
 function remove_race(){
