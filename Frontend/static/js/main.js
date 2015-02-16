@@ -77,6 +77,23 @@ function update_attributes(key, value){
 	}
 }
 
+function update_special_attributes(){
+	summary_data['special_attributes_spent'] = attributes['edg']['base'] + attributes['mag']['base'] + attributes['res']['base'];
+
+	$('#summary-special-attributes').html(summary_data['special_attributes_spent'] + ' of ' + summary_data['special_attributes_available']);
+
+	if (summary_data['special_attributes_spent'] > summary_data['special_attributes_available']){
+		$('#summary-special-attributes').parent().addClass('danger');		
+		$('#summary-special-attributes').parent().removeClass('success');		
+	} else if (summary_data['special_attributes_spent'] == summary_data['special_attributes_available']) {
+		$('#summary-special-attributes').parent().addClass('success');		
+		$('#summary-special-attributes').parent().removeClass('danger');		
+	} else {
+		$('#summary-special-attributes').parent().removeClass('danger');		
+		$('#summary-special-attributes').parent().removeClass('success');
+	}
+}
+
 function update_skills(key, value){
 	summary_data[key] = value;
 
@@ -125,6 +142,7 @@ function set_summary_data(key, value){
 }
 
 function modify_summary_data(key, delta){
+	alert(key+'-'+delta);
 	summary_data[key] += parseInt(delta);
 
 	var html_element = $('#summary-'+key);

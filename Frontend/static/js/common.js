@@ -17,8 +17,12 @@ $(function(){
 		max: 6,
 		start: 0,
 		spin: function( event, ui ) {
-			modify_summary_data('special-attributes', ui.value);
+			summary_data['attributes'][$(this).attr('id')]['base'] = ui.value;
+			update_special_attributes();
       	}
 	});
+	$('#edg').val(attributes['edg']['base']);
+	//.spinner( "disable" );
+	$( ".special-spinner" ).addClass('disabled');
 	$('.karma-spinner').spinner();
 });
