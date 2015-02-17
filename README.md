@@ -57,7 +57,6 @@ Screen Shots
 
 Todo
 ========
-Skill Groups mouseover shows skills.  Also adding skill groups gives you skills.
 Specializations
 Implement karma slider.
 Edge from metatype priority selection

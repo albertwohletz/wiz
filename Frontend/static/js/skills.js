@@ -5,10 +5,7 @@ $(function(){
 		max: 6,
 		start: 0,
 		spin: function( event, ui ) {
-			$(this).attr
-			//set_skill($(this).attr('id'), ui.value)
-			sum=0;
-			update_skills('skills_spent', sum);
+			summary_data['skills'][$(this).attr('id')] = ui.value;
       	}
 	});
 
@@ -22,7 +19,7 @@ $(function(){
 			sum=0;
 			var group = $(this).attr('id');
 			set_skill_group(group, ui.value);
-			update_skills('skill_groups_spent', sum);
+			//update_skills('skill_groups_spent', sum);
       	}
 	});
 });
@@ -34,16 +31,25 @@ function set_skill_group(group, value){
 	for (i in group_to_skill[group]){
 		if (first != summary_data['skills'][group_to_skill[group][i]]){
 			problem = true;
+			break;
 		}
 	}
 
 	if (problem){
 		alert('You cannot add a skill group if one of the prequisite skills has ranks.');
+	} else {
+		for (i in group_to_skill[group]){
+			set_skill(group_to_skill[group][i], value);
+		}
 	}
 }
 
 function set_skill(skill, value){
 	summary_data['skills'][skill] = value;
+
+	// Get New Values
+	var spinner = $('#'+id);
+	spinner.spinner().spinner('value', value);
 }
 
 var skill_to_group = {
