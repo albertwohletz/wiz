@@ -58,6 +58,7 @@ Screen Shots
 Todo
 ========
 Skill Groups mouseover shows skills.  Also adding skill groups gives you skills.
+Implement karma slider.
 Edge from metatype priority selection
 Min max spinners
 Save Tab
