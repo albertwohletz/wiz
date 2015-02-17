@@ -11,7 +11,7 @@
 			{% for group in skill_groups %}
 			<tr class='skill-group' data-content="{% for skill in group.skills %}{{skill}} {% endfor %}" data-toggle="popover" data-trigger="hover" data-placement="top">
 				<td >{{group.name}}</td>
-	            <td class='group-{{group.id}}-base'><input class="spinner group-spinner" value="1"></td>
+	            <td class='group-{{group.id}}-base'><input class="spinner group-spinner" id='{{group.id}}' value="0"></td>
 	            <td class='group-{{group.id}}-karma'><input class="spinner group-karma-spinner" value="0"></td>
 
 			</tr>
@@ -52,3 +52,12 @@
 		</table>
 	</div>
 </div>
+{
+{% for group in skill_groups %}
+	'{{group.id}}': [
+	{% for skill in group.skills %}
+		'{{skill}}',
+	{% endfor %}
+	],<br>
+{% endfor %}
+}
