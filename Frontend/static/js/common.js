@@ -7,7 +7,7 @@ $(function(){
 			set_attribute($(this).attr('id'), ui.value);
 			sum=0;
 			$('.attribute-spinner').each(function(){
-		    	sum += parseInt($(this).val() - $(this).attr('aria-valuemin'));
+		    	sum += parseInt($(this).attr('aria-valuenow') - $(this).attr('aria-valuemin'));
 			});
 			update_attributes('attributes_spent', sum);
       	}
@@ -21,7 +21,6 @@ $(function(){
 			update_special_attributes();
       	}
 	});
-	$('#edg').val(attributes['edg']['base']);
 	//.spinner( "disable" );
 	$( ".special-spinner" ).addClass('disabled');
 	$('.karma-spinner').spinner();

@@ -78,7 +78,10 @@ function update_attributes(key, value){
 }
 
 function update_special_attributes(){
-	summary_data['special_attributes_spent'] = attributes['edg']['base'] + attributes['mag']['base'] + attributes['res']['base'];
+	summary_data['special_attributes_spent'] = 0;
+	$('.special-spinner').each(function(){
+		summary_data['special_attributes_spent'] += parseInt($(this).attr('aria-valuenow') - $(this).attr('aria-valuemin'));
+	});
 
 	$('#summary-special-attributes').html(summary_data['special_attributes_spent'] + ' of ' + summary_data['special_attributes_available']);
 
@@ -143,7 +146,6 @@ function set_summary_data(key, value){
 }
 
 function modify_summary_data(key, delta){
-	alert(key+'-'+delta);
 	summary_data[key] += parseInt(delta);
 
 	var html_element = $('#summary-'+key);
@@ -187,13 +189,4 @@ function increment_spinner_vals(id, delta){
 	vals = get_spinner_vals(spinner);
 	spinner.spinner().spinner({'min': parseInt(vals['min'])+delta, 'max': parseInt(vals['max'])+delta});
 }
-
-// Initialize
-$(function(){ 
-	set_race('human');
-
-	for (att in attributes){
-		increment_base(att, 0);
-	}
-});
 
