@@ -134,8 +134,12 @@ function set_attribute(key, value){
 }
 function increment_base(key, value){
 	attributes[key]['base'] += value;
+	if (attributes[key]['base'] <= 0) {
+		attributes[key]['base'] = 1;
+	}
 	$('.'+key+'-val').html(attributes[key]['base']);
-	$("#"+key).spinner().spinner("value", attributes[key]['base']);
+
+	// Update Spinners
 	increment_spinner_vals(key, value);
 }
 
@@ -185,8 +189,18 @@ function get_spinner_vals(spinner){
 	return {'min': spinner.attr('aria-valuemin'), 'max': spinner.attr('aria-valuemax')};
 }
 function increment_spinner_vals(id, delta){
+	// Get New Values
 	var spinner = $('#'+id);
 	vals = get_spinner_vals(spinner);
-	spinner.spinner().spinner({'min': parseInt(vals['min'])+delta, 'max': parseInt(vals['max'])+delta});
+	vals['min'] = parseInt(vals['min'])+delta;
+	vals['max'] = parseInt(vals['max'])+delta;
+
+	// Make sure not negative/zero
+	if (vals['min'] <= 0) {
+		vals['min'] = 1;
+	}
+
+	// New Values
+	spinner.spinner().spinner({'min': vals['min'], 'max': vals['max'], 'value': attributes[id]['base']});
 }
 
