@@ -201,7 +201,8 @@ function increment_spinner_vals(id, delta){
 	}
 
 	// New Values
-	spinner.spinner().spinner({'min': vals['min'], 'max': vals['max'], 'value': attributes[id]['base']});
+	spinner.spinner().spinner({'min': vals['min'], 'max': vals['max']});
+	spinner.spinner().spinner('value', attributes[id]['base']);
 
 	// Update limits page
 	$('.'+id+'-limit').html(vals['max']+'('+(vals['max']+4)+')');
