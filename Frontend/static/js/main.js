@@ -45,7 +45,7 @@ var summary_data={
 	'attributes_spent': 0,
 	'attributes_available': 16,
 	'special_attributes_spent': 0,
-	'special_attributes_available': 16,
+	'special_attributes_available': 1,
 	'skills_spent': 0,
 	'skills_available': 16,
 	'skill_groups_spent': 0,

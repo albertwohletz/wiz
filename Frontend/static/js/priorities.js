@@ -239,7 +239,7 @@ function set_race(race_name){
 
 	var index = $('#priority-metatype>option:selected').attr('index');
 	summary_data['special_attributes_available'] = race_values[index][race_name];
-	$('#summary-special-attributes').html(summary_data['special_attributes_spent'] + ' of ' + summary_data['special_attributes_available']);
+	update_special_attributes();
 }
 
 function remove_race(){
