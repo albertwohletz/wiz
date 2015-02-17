@@ -52,12 +52,3 @@
 		</table>
 	</div>
 </div>
-{
-{% for group in skill_groups %}
-	'{{group.id}}': [
-	{% for skill in group.skills %}
-		'{{skill}}',
-	{% endfor %}
-	],<br>
-{% endfor %}
-}

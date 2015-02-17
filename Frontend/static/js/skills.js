@@ -1,10 +1,12 @@
 $(function(){
 	$('.skill-group').popover({ trigger: "hover" });
 	$( ".skill-spinner" ).spinner({
-		min: 1,
+		min: 0,
 		max: 6,
-		start: 1,
+		start: 0,
 		spin: function( event, ui ) {
+			$(this).attr
+			//set_skill($(this).attr('id'), ui.value)
 			sum=0;
 			update_skills('skills_spent', sum);
       	}
@@ -19,14 +21,30 @@ $(function(){
 		spin: function( event, ui ) {
 			sum=0;
 			var group = $(this).attr('id');
-			for (a in group_to_skill[group]){
-				alert(group_to_skill[group][a]);
-			}
-	
+			set_skill_group(group, ui.value);
 			update_skills('skill_groups_spent', sum);
       	}
 	});
 });
+
+function set_skill_group(group, value){
+	// check all numbers same
+	var problem = false;
+	var first = summary_data['skills'][group_to_skill[group][0]];
+	for (i in group_to_skill[group]){
+		if (first != summary_data['skills'][group_to_skill[group][i]]){
+			problem = true;
+		}
+	}
+
+	if (problem){
+		alert('You cannot add a skill group if one of the prequisite skills has ranks.');
+	}
+}
+
+function set_skill(skill, value){
+	summary_data['skills'][skill] = value;
+}
 
 var skill_to_group = {
 	'con': 'acting',
@@ -36,16 +54,16 @@ var skill_to_group = {
 	'running': 'athletics',
 	'swimming': 'athletics',
 	'cybertechnology': 'biotech',
-	'first aid': 'biotech',
+	'firstaid': 'biotech',
 	'medicine': 'biotech',
 	'blades': 'closecombat',
 	'clubs': 'closecombat',
-	'unarmed combat': 'closecombat',
+	'unarmedcombat': 'closecombat',
 	'banishing': 'conjouring',
 	'binding': 'conjouring',
 	'summoning': 'conjouring',
 	'cybercombat': 'cracking',
-	'electronic warfare': 'cracking',
+	'electronicwarfare': 'cracking',
 	'hacking': 'cracking',
 	'computer': 'electronics',
 	'hardware': 'electronics',
@@ -53,10 +71,10 @@ var skill_to_group = {
 	'alchemy': 'enchanting',
 	'artificing': 'enchanting',
 	'disenchanting': 'enchanting',
-	'aeronautics mechanic': 'engineering',
-	'automotive mechanic': 'engineering',
-	'industrial mechanic': 'engineering',
-	'nautical mechanic': 'engineering',
+	'aeronauticsmechanic': 'engineering',
+	'automotivemechanic': 'engineering',
+	'industrialmechanic': 'engineering',
+	'nauticalmechanic': 'engineering',
 	'automatics': 'firearms',
 	'longarms': 'firearms',
 	'pistols': 'firearms',
@@ -67,7 +85,7 @@ var skill_to_group = {
 	'survival': 'outdoors',
 	'tracking': 'outdoors',
 	'counterspelling': 'sorcery',
-	'ritual spellcasting': 'sorcery',
+	'ritualspellcasting': 'sorcery',
 	'spellcasting': 'sorcery',
 	'disguise': 'stealth',
 	'palming': 'stealth',
@@ -80,17 +98,17 @@ var skill_to_group = {
 var group_to_skill = { 
 	'acting': [ 'con', 'impersonation', 'performance', ],
 	'athletics': [ 'gymnastics', 'running', 'swimming', ],
-	'biotech': [ 'cybertechnology', 'first aid', 'medicine', ],
+	'biotech': [ 'cybertechnology', 'firstaid', 'medicine', ],
 	'closecombat': [ 'blades', 'clubs', 'unarmed combat', ],
 	'conjouring': [ 'banishing', 'binding', 'summoning', ],
-	'cracking': [ 'cybercombat', 'electronic warfare', 'hacking', ],
+	'cracking': [ 'cybercombat', 'electronicwarfare', 'hacking', ],
 	'electronics': [ 'computer', 'hardware', 'software', ],
 	'enchanting': [ 'alchemy', 'artificing', 'disenchanting', ],
-	'engineering': [ 'aeronautics mechanic', 'automotive mechanic', 'industrial mechanic', 'nautical mechanic', ],
+	'engineering': [ 'aeronauticsmechanic', 'automotivemechanic', 'industrialmechanic', 'nauticalmechanic', ],
 	'firearms': [ 'automatics', 'longarms', 'pistols', ],
 	'influence': [ 'etiquette', 'leadership', 'negotiation', ],
 	'outdoors': [ 'navigation', 'survival', 'tracking', ],
-	'sorcery': [ 'counterspelling', 'ritual spellcasting', 'spellcasting', ],
+	'sorcery': [ 'counterspelling', 'ritualspellcasting', 'spellcasting', ],
 	'stealth': [ 'disguise', 'palming', 'sneaking', ],
 	'tasking': [ 'compiling', 'decompiling', 'registering', ],
 };
