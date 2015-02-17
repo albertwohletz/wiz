@@ -132,7 +132,8 @@ function set_attribute(key, value){
 function increment_base(key, value){
 	attributes[key]['base'] += value;
 	$('.'+key+'-val').html(attributes[key]['base']);
-	$('#'+key).html(attributes[key]['base']);
+	$("#"+key).spinner().spinner("value", attributes[key]['base']);
+	increment_spinner_vals(key, value);
 }
 
 
@@ -176,6 +177,15 @@ function remove_quality(id){
 	summary_data["qualities"][id] = {};
 	$('.quality').addClass('hidden');
 	modify_summary_data('karma', karma);
+}
+
+function get_spinner_vals(spinner){
+	return {'min': spinner.attr('aria-valuemin'), 'max': spinner.attr('aria-valuemax')};
+}
+function increment_spinner_vals(id, delta){
+	var spinner = $('#'+id);
+	vals = get_spinner_vals(spinner);
+	spinner.spinner().spinner({'min': parseInt(vals['min'])+delta, 'max': parseInt(vals['max'])+delta});
 }
 
 // Initialize
