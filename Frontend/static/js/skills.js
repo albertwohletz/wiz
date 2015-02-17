@@ -1,4 +1,5 @@
 $(function(){
+	$('.skill-group').popover({ trigger: "hover" });
 	$( ".skill-spinner" ).spinner({
 		min: 1,
 		max: 6,

@@ -8,11 +8,12 @@
 					<th>Karma</th>
 				</tr>
 			</thead>
-			{% for skill in skill_groups %}
-			<tr>
-				<td>{{skill}}</td>
-	            <td class='group-{{skill}}-base'><input class="spinner group-spinner" value="1"></td>
-	            <td class='group-{{skill}}-karma'><input class="spinner group-karma-spinner" value="0"></td>
+			{% for group in skill_groups %}
+			<tr class='skill-group' data-content="{% for skill in group.skills %}{{skill}} {% endfor %}" data-toggle="popover" data-trigger="hover" data-placement="top">
+				<td >{{group.name}}</td>
+	            <td class='group-{{group.id}}-base'><input class="spinner group-spinner" value="1"></td>
+	            <td class='group-{{group.id}}-karma'><input class="spinner group-karma-spinner" value="0"></td>
+
 			</tr>
 			{% endfor %}
 		</table>
@@ -45,11 +46,6 @@
 					    <li><a href="#">{{spec}}</a></li>
 	            		{% endfor %}
  					</ul>
-	            <!--<select>
-	            	{% for spec in skill.specs.spec %}
-	            		<option>{{spec}}</option>
-	            	{% endfor %}
-	            </select>-->
 	            </td>
 			</tr>
 			{% endfor %}
