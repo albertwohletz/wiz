@@ -58,13 +58,10 @@ Screen Shots
 Todo
 ========
 Skill Groups mouseover shows skills.  Also adding skill groups gives you skills.
-
 Edge from metatype priority selection
 Min max spinners
-
 Save Tab
 Adding Items tabs(adept/spell/etc).
 
-For Future Todo
-==============
 Races in DB -> more races in project.
+skills in db.
