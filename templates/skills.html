@@ -37,9 +37,8 @@
 	            <td ><input class="spinner skill-spinner" id='{{skill.name|lower|cut:" "}}' value="0"></td>
 	            <td><input class="spinner skill-karma-spinner" value="0"></td>
 	            <td id='total-{{skill.name|lower|cut:" "}}'>0</td>
-	            <td>
-	             	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    					Specialization<span class="caret"></span>
+	            <td class="btn-group">
+	             	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Specialization<span class="caret"></span>
   					</button>
 	            	<ul class="dropdown-menu" role="menu">
 	            		{% for spec in skill.specialization_list %}
