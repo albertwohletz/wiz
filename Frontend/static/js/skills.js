@@ -6,7 +6,10 @@ $(function(){
 		start: 0,
 		spin: function( event, ui ) {
 			set_skill($(this).attr('id'), ui.value);
-			//summary_data['skills'][$(this).attr('id')] = ui.value;
+
+			var sum = 0;
+
+			update_skill_summaries();
       	}
 	});
 	$('.skill-karma-spinner').spinner();
@@ -18,9 +21,10 @@ $(function(){
 		max: 6,
 		start: 0,
 		spin: function( event, ui ) {
-			sum=0;
 			var group = $(this).attr('id');
 			set_skill_group(group, ui.value);
+
+			update_skill_summaries();
       	}
 	});
 
@@ -32,23 +36,10 @@ $(function(){
 });
 
 function set_skill_group(group, value){
-	// check all numbers same
-	var problem = false;
-	var first = summary_data['skills'][group_to_skill[group][0]];
 	for (i in group_to_skill[group]){
-		if (first != summary_data['skills'][group_to_skill[group][i]]){
-			problem = true;
-			break;
-		}
+		set_skill(group_to_skill[group][i], value);
 	}
-
-	if (problem){
-		alert('You cannot add a skill group if one of the prequisite skills has ranks.');
-	} else {
-		for (i in group_to_skill[group]){
-			set_skill(group_to_skill[group][i], value);
-		}
-	}
+	summary_data['skill_groups'][group] = value;
 }
 
 function set_skill(skill, value){

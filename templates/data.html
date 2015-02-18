@@ -9,4 +9,10 @@ summary_data['skills'] = {
 		'{{skill.name|lower|cut:" "}}':0,
 	{% endfor %}
 };
+
+summary_data['skill_groups'] = {
+	{% for group in skill_groups %}
+		'{{group.name|lower|cut:" "}}': 0,
+	{% endfor %}
+};
 </script>
