@@ -17,4 +17,5 @@ class Skills(models.Model):
 	group = models.CharField(max_length=50)
 	category = models.CharField(max_length=50)
 	default = models.BooleanField(max_length=50)
-	specializations = models.BooleanField(max_length=50)
+	specializations = models.CharField(max_length=100)
+	source = models.CharField(max_length=100)
