@@ -57,10 +57,7 @@ Screen Shots
 
 Todo
 ========
-Specializations
 Implement karma slider.
-Edge from metatype priority selection
-Min max spinners
 Save Tab
 Adding Items tabs(adept/spell/etc).
 
