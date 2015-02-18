@@ -11,4 +11,32 @@
     <!-- Spirits -->
     <div class='col-xs-12'>
     </div>
+    <button data-toggle="modal" data-target="#spells-modal"></button>
+	<div class="modal fade" id='spells-modal'>
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <div class='spells modal-list'>
+	                    <div class='col-xs-8'>
+	                    	<ul class="list-group spells-list">
+	                    	{% for spell in spells %}
+	                    		<li class="list-group-item no-pad spell-item">{{spell.name}}</li>
+	                    	{% endfor %}
+	                    	</ul>
+	                    </div>
+	                    <div class='col-xs-4'>
+	                        <div class='spell-description'>
+	                        </div>
+	                        <ul class="nav nav-tabs">
+	                            <li class='nav-cancel'><a data-role="button" href="#">Cancel</a></li>
+	                            <li class='nav-add-spell'><a data-role="button" href="#">Add</a></li>
+	                        </ul>   
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
 </div>
+

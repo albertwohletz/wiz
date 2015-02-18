@@ -37,7 +37,8 @@ def home(request):
             {'name': 'Stealth', 'id': 'stealth', 'skills': ('Disguise', 'Palming', 'Sneaking',)},
             {'name': 'Tasking', 'id': 'tasking', 'skills': ('Compiling', 'Decompiling', 'Registering',)}
         ],
-        'skills': models.Skills.objects.all()
+        'skills': models.Skills.objects.all(),
+        'spells': models.Spells.objects.all().order_by('name')
     }
 
     return render(request, 'main.html', params)
