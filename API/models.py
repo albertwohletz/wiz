@@ -22,3 +22,14 @@ class Skills(models.Model):
 
 	def specialization_list(self):              
 		return self.specializations.split('-')
+
+class Spells(models.Model):
+	name = models.CharField(max_length=50)
+	descriptor = models.CharField(max_length=50)
+	category = models.CharField(max_length=20)
+	type = models.CharField(max_length=1)
+	range = models.CharField(max_length=10)
+	damage = models.CharField(max_length=1)
+	duration = models.CharField(max_length=1)
+	dv = models.CharField(max_length=10)
+	source = models.CharField(max_length=10)

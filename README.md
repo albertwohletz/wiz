@@ -57,9 +57,9 @@ Screen Shots
 
 Todo
 ========
-Implement karma slider.
 Save Tab
 Adding Items tabs(adept/spell/etc).
+Implement karma slider.
 
 Races in DB -> more races in project.
 skills in db.
