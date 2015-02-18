@@ -39,55 +39,6 @@ var attributes={
 	'res': {'base': 0, 'aug': 0}
 }
 
-var skills = { 
-	'con': 0, 
-	'impersonation': 0, 
-	'performance': 0, 
-	'gymnastics': 0, 
-	'running': 0, 
-	'swimming': 0, 
-	'cybertechnology': 0, 
-	'first aid': 0, 
-	'medicine': 0, 
-	'blades': 0, 
-	'clubs': 0, 
-	'unarmed combat': 0, 
-	'banishing': 0, 
-	'binding': 0, 
-	'summoning': 0, 
-	'cybercombat': 0, 
-	'electronic warfare': 0, 
-	'hacking': 0, 
-	'computer': 0, 
-	'hardware': 0, 
-	'software': 0, 
-	'alchemy': 0, 
-	'artificing': 0, 
-	'disenchanting': 0, 
-	'aeronautics mechanic': 0, 
-	'automotive mechanic': 0, 
-	'industrial mechanic': 0, 
-	'nautical mechanic': 0, 
-	'automatics': 0, 
-	'longarms': 0, 
-	'pistols': 0, 
-	'etiquette': 0, 
-	'leadership': 0, 
-	'negotiation': 0, 
-	'navigation': 0, 
-	'survival': 0, 
-	'tracking': 0, 
-	'counterspelling': 0, 
-	'ritual spellcasting': 0, 
-	'spellcasting': 0, 
-	'disguise': 0, 
-	'palming': 0, 
-	'sneaking': 0, 
-	'compiling': 0, 
-	'decompiling': 0, 
-	'registering': 0, 
-};
-
 var summary_data={
 	'priorities_spent': 0,
 	'priorities_available': 16,
@@ -102,7 +53,6 @@ var summary_data={
 	'karma': 25,
 	'attributes': attributes,
 	'qualities': [],
-	'skills': skills,
 	'race': '',
 	'magic': {'mag': 0, 'res': 0},
 	'nuyen': 6000
@@ -179,17 +129,21 @@ function get_attribute(key){
 }
 function set_attribute(key, value){
 	attributes[key]['base'] = value;
+	attributes[key]['aug'] = attributes[key]['base'];
 	$('.'+key+'-val').html(value);
+	update_skills();
 }
 function increment_base(key, value){
 	attributes[key]['base'] += value;
 	if (attributes[key]['base'] <= 0) {
 		attributes[key]['base'] = 1;
 	}
+	attributes[key]['aug'] = attributes[key]['base'];
 	$('.'+key+'-val').html(attributes[key]['base']);
 
 	// Update Spinners
 	increment_spinner_vals(key, value);
+	update_skills();
 }
 
 

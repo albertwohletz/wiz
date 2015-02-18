@@ -5,7 +5,8 @@ $(function(){
 		max: 6,
 		start: 0,
 		spin: function( event, ui ) {
-			summary_data['skills'][$(this).attr('id')] = ui.value;
+			set_skill($(this).attr('id'), ui.value);
+			//summary_data['skills'][$(this).attr('id')] = ui.value;
       	}
 	});
 	$('.skill-karma-spinner').spinner();
@@ -20,7 +21,6 @@ $(function(){
 			sum=0;
 			var group = $(this).attr('id');
 			set_skill_group(group, ui.value);
-			//update_skills('skill_groups_spent', sum);
       	}
 	});
 });
@@ -51,6 +51,20 @@ function set_skill(skill, value){
 	// Get New Values
 	var spinner = $('#'+skill);
 	spinner.spinner().spinner('value', value);
+
+	// Update Total
+	att = get_attribute(skill);
+	$('#total-'+skill).html(summary_data['attributes'][att]['aug'] + value);
+}
+
+function get_attribute(skill){
+	return skills_to_attribute[skill];
+}
+
+function update_skills(){
+	for (skill_name in summary_data['skills']){
+		set_skill(skill_name, summary_data['skills'][skill_name]);
+	}
 }
 
 var skill_to_group = {
