@@ -100,15 +100,20 @@ function update_skill_summaries(){
 	summary_data['skills_spent'] = 0;
 	summary_data['skill_groups_spent'] = 0;
 
+	// Factor in Skills
 	for (name in summary_data['skills']){
 		summary_data['skills_spent'] += summary_data['skills'][name];
 	}
 
+	// Factor in Groups
 	for (name in summary_data['skill_groups']){
 		var num_skills_in_group = group_to_skill[name].length;
 		summary_data['skills_spent'] -= summary_data['skill_groups'][name] * num_skills_in_group;
 		summary_data['skill_groups_spent'] += summary_data['skill_groups'][name];
 	}
+
+	// Add Specialization Cost
+	summary_data['skills_spent'] += $('.dropdown-toggle.selected-specialization').length;
 
 	$('#summary-skills').html(summary_data['skills_spent'] + ' of ' + summary_data['skills_available']);
 	$('#summary-groups').html(summary_data['skill_groups_spent'] + ' of ' + summary_data['skill_groups_available']);

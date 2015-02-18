@@ -32,12 +32,16 @@ $(function(){
 		var button_id = '#' + $(this).attr('button');
 		var button = $(button_id);
 		button.html($(this).attr('value')+'<span class="caret"></span>');
+		button.addClass('selected-specialization');
+		update_skill_summaries();
 	});
 });
 
 function set_skill_group(group, value){
 	for (i in group_to_skill[group]){
 		$('#spec-button-' + group_to_skill[group][i]).html('Specialization<span class="caret"></span>');
+		$('#spec-button-' + group_to_skill[group][i]).removeClass('selected-specialization');
+
 		set_skill(group_to_skill[group][i], value);
 	}
 	summary_data['skill_groups'][group] = value;
