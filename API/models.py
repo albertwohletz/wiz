@@ -19,3 +19,6 @@ class Skills(models.Model):
 	default = models.BooleanField(max_length=50)
 	specializations = models.CharField(max_length=100)
 	source = models.CharField(max_length=100)
+
+	def specialization_list(self):              
+		return self.specializations.split('-')

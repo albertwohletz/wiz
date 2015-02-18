@@ -9,12 +9,12 @@ def populate_existing():
             s.category = skill['category']
             if skill['specs'] and skill['specs'].get('spec'):
                   if isinstance(skill['specs'].get('spec'), list):
-                        s.spec = "-".join(skill['specs'].get('spec'))
+                        s.specializations = "-".join(skill['specs'].get('spec'))
                   else:
-                        s.spec = skill['specs'].get('spec')
+                        s.specializations = skill['specs'].get('spec')
             else:
-                  s.spec = ''
-            print s.spec
+                  s.specializations = ''
+                  
             s.source = "%s p%s" % (skill['source'], skill['page'])
             if skill['default'] == 'No':
                   s.default = False
