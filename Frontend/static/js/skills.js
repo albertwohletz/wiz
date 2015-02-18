@@ -23,6 +23,12 @@ $(function(){
 			set_skill_group(group, ui.value);
       	}
 	});
+
+	$('.specialization').click(function(){
+		var button_id = '#' + $(this).attr('button');
+		var button = $(button_id);
+		button.html($(this).attr('value')+'<span class="caret"></span>');
+	});
 });
 
 function set_skill_group(group, value){
