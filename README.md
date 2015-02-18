@@ -15,6 +15,7 @@ Prob add limits here for sure
 Skills
 --------
 Skills/Skill Groups/Knowledge Skills
+Group skills will overwrite non group skills.
 
 Spells and Spirits
 --------

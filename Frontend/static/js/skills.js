@@ -22,7 +22,7 @@ $(function(){
 		start: 0,
 		spin: function( event, ui ) {
 			var group = $(this).attr('id');
-			set_skill_group(group, ui.value);
+			set_skill_group(group, ui.value); 
 
 			update_skill_summaries();
       	}
@@ -37,6 +37,7 @@ $(function(){
 
 function set_skill_group(group, value){
 	for (i in group_to_skill[group]){
+		$('#spec-button-' + group_to_skill[group][i]).html('Specialization<span class="caret"></span>');
 		set_skill(group_to_skill[group][i], value);
 	}
 	summary_data['skill_groups'][group] = value;
