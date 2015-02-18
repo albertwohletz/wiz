@@ -59,8 +59,10 @@ $(function(){
 	});	
 	$('#priority-skills').change(function() {
 		var val = $(this).val()
-		update_skill_summaries('skills_available', val.split('/')[0]);
-		update_skill_summaries('skill_groups_available', val.split('/')[1]);
+		summary_data['skills_available'] = val.split('/')[0];
+		summary_data['skill_groups_available'] = val.split('/')[1];
+
+		update_skill_summaries();
 	});
 
 	$('#priority-magic').change(function() {
