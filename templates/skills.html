@@ -34,10 +34,10 @@
 			<tr class='{{skill.skillgroup}}'>
 				<td>{{skill.name}}</td>
 				<td>{{skill.attribute|upper}}</td>
-	            <td class='skill-{{skill.name|lower|cut:" "}}-base'><input class="spinner skill-spinner" id='{{skill.id}}' value="0"></td>
-	            <td class='skill-{{skill.name|lower|cut:" "}}-karma'><input class="spinner skill-karma-spinner" value="0"></td>
-	            <td class='skill-{{skill.name|lower|cut:" "}}-total'>1</td>
-	            <td class='skill-{{skill.name|lower|cut:" "}}-spec btn-group'>
+	            <td ><input class="spinner skill-spinner" id='{{skill.name|lower|cut:" "}}' value="0"></td>
+	            <td><input class="spinner skill-karma-spinner" value="0"></td>
+	            <td id='{{skill.name|lower|cut:" "}}-total'>0</td>
+	            <td>
 	             	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     					Specialization <span class="caret"></span>
   					</button>

@@ -1,6 +1,6 @@
 $(function(){
 	$('.skill-group').popover({ trigger: "hover" });
-	$( ".skill-spinner" ).spinner({
+	$('.skill-spinner').spinner({
 		min: 0,
 		max: 6,
 		start: 0,
@@ -8,10 +8,11 @@ $(function(){
 			summary_data['skills'][$(this).attr('id')] = ui.value;
       	}
 	});
+	$('.skill-karma-spinner').spinner();
 
-	$( ".group-karma-spinner").spinner();
+	$(".group-karma-spinner").spinner();
 
-	$( ".group-spinner" ).spinner({
+	$(".group-spinner").spinner({
 		min: 0,
 		max: 6,
 		start: 0,
@@ -48,7 +49,7 @@ function set_skill(skill, value){
 	summary_data['skills'][skill] = value;
 
 	// Get New Values
-	var spinner = $('#'+id);
+	var spinner = $('#'+skill);
 	spinner.spinner().spinner('value', value);
 }
 
