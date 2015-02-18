@@ -1,0 +1,12 @@
+<script type='text/javascript'>
+var skills_to_attribute = {
+	{% for skill in skills %}
+		'{{skill.name|lower|cut:" "}}':'{{skill.attribute}}',
+	{% endfor %}
+};
+summary_data['skills'] = {
+	{% for skill in skills %}
+		'{{skill.name|lower|cut:" "}}':0,
+	{% endfor %}
+};
+</script>
