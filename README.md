@@ -41,9 +41,17 @@ Lifestyle, Armor, Weapons, Gear, Pets
 Vehicles and Drones
 --------
 
+Charecter Summary
+---------------
+Stats and dice roller.
+
 Charecter Info
 --------
 20 Questions
+
+
+Dice Roller
+-------------
 
 Known Issues
 ============
@@ -58,6 +66,23 @@ Screen Shots
 
 Todo
 ========
+race as attribute modifier.
+summary_data['modifications'] = list of mods.
+
+for mod in summary_data['modifications']{
+	for attribute in mod:
+		summary_data['mod'] += attribute
+}
+
+a mod = {
+	'body_base': 2,
+	'body_aug': 2
+
+	'string': 'thermal vision'
+}
+
+do i need body_base_min and body_base_max?
+
 Save Tab
 Adding Items tabs(adept/spell/etc).
 Implement karma slider.
