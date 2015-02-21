@@ -6,8 +6,8 @@ $(function(){
 		spin: function( event, ui ) {
 			set_attribute($(this).attr('id'), ui.value);
 			var sum = 0;
-			for (var attribute in attributes){
-				sum += attribute['base'];
+			for (var attribute_name in attributes){
+				sum += attributes[attribute_name]['base'] - attributes[attribute_name]['min'];
 			}
 			update_attributes('attributes_spent', sum);
       	}

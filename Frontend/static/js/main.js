@@ -26,17 +26,17 @@ $(function(){
 });
 
 var attributes={
-	'bod': {'base': 1, 'aug': 1},
-	'agi': {'base': 1, 'aug': 1},
-	'rea': {'base': 1, 'aug': 1},
-	'str': {'base': 1, 'aug': 1},
-	'cha': {'base': 1, 'aug': 1},
-	'int': {'base': 1, 'aug': 1},
-	'log': {'base': 1, 'aug': 1},
-	'wil': {'base': 1, 'aug': 1},
-	'edg': {'base': 1, 'aug': 1},
-	'mag': {'base': 0, 'aug': 0},
-	'res': {'base': 0, 'aug': 0}
+	'bod': {'base': 1, 'aug': 1, 'min': 1},
+	'agi': {'base': 1, 'aug': 1, 'min': 1},
+	'rea': {'base': 1, 'aug': 1, 'min': 1},
+	'str': {'base': 1, 'aug': 1, 'min': 1},
+	'cha': {'base': 1, 'aug': 1, 'min': 1},
+	'int': {'base': 1, 'aug': 1, 'min': 1},
+	'log': {'base': 1, 'aug': 1, 'min': 1},
+	'wil': {'base': 1, 'aug': 1, 'min': 1},
+	'edg': {'base': 1, 'aug': 1, 'min': 1},
+	'mag': {'base': 0, 'aug': 0, 'min': 1},
+	'res': {'base': 0, 'aug': 0, 'min': 1}
 }
 
 var summary_data={
@@ -151,8 +151,9 @@ function set_attribute(key, value){
 }
 function increment_base(key, value){
 	attributes[key]['base'] += value;
-	if (attributes[key]['base'] <= 0) {
-		attributes[key]['base'] = 1;
+	attributes[key]['min'] += value;
+	if (attributes[key]['base'] <= attributes[key]['min']) {
+		attributes[key]['base'] = attributes[key]['min'];
 	}
 	attributes[key]['aug'] = attributes[key]['base'];
 	$('.'+key+'-val').html(attributes[key]['base']);
