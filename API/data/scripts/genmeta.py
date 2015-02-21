@@ -18,8 +18,15 @@ for race in metatypes:
 	race.pop('sprint')
 
 	s = "'%s': {" % name
+
+	# Do Attributes
+	#atts = ['bod', 'agi', 'rea', 'str', 'cha', 'int', 'log', 'wil', 'edg', 'mag', 'res'];
+	#for att in atts:
+	#	s += '%s': {},
+
 	for k,v in race.iteritems():
 		s += "'%s': %s," % (k,v)
 	s += '},'
 	print s 
 
+    		

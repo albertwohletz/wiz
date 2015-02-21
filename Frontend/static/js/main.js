@@ -140,27 +140,29 @@ function get_data(key){
 	return data[key];
 }
 
-function get_attribute(key){
-	return attributes[key];
-}
 function set_attribute(key, value){
 	attributes[key]['base'] = value;
-	attributes[key]['aug'] = attributes[key]['base'];
-	$('.'+key+'-val').html(value);
+	update_attribute_display(key);
+	
 	update_skills();
 }
 
 function increment_base(key, value){
 	attributes[key]['base'] += value;
 	attributes[key]['min'] += value;
+	attributes[key]['max'] += value;
+
+	if (attributes[key]['min'] <= 0) {
+		attributes[key]['min'] = 1;
+	}
+
 	if (attributes[key]['base'] <= attributes[key]['min']) {
 		attributes[key]['base'] = attributes[key]['min'];
 	}
-	attributes[key]['aug'] = attributes[key]['base'];
-	$('.'+key+'-val').html(attributes[key]['base']);
+
 
 	// Update Spinners
-	update_attributes();
+	update_attribute_display(key);
 	update_skills();
 }
 
@@ -170,14 +172,15 @@ function update_attribute_display(attribute_name){
 	var spinner = $('#'+attribute_name);
 
 	// Make sure not negative/zero
-	attribute = get_attribute(attribute_name);
+	attribute = attributes[attribute_name];
 
 	// New Values
-	spinner.spinner().spinner({'min': vals['min'], 'max': vals['max']});
-	spinner.spinner().spinner('value', attributes[id]['base']);
+	spinner.spinner().spinner({'min': attribute['min'], 'max': attribute['max']});
+	spinner.spinner().spinner('value', attribute['base']);
 
 	// Update limits page
-	$('.'+attribute_name+'-limit').html(vals['max']+'('+(vals['max']+4)+')');
+	$('.'+attribute_name+'-val').html(attribute['base']);
+	$('.'+attribute_name+'-limit').html(attribute['max']+'('+(attribute['max']+4)+')');
 }
 
 //// Summary Data ////
