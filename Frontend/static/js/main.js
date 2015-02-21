@@ -26,17 +26,17 @@ $(function(){
 });
 
 var attributes={
-	'bod': {'base': 1, 'aug': 1, 'min': 1},
-	'agi': {'base': 1, 'aug': 1, 'min': 1},
-	'rea': {'base': 1, 'aug': 1, 'min': 1},
-	'str': {'base': 1, 'aug': 1, 'min': 1},
-	'cha': {'base': 1, 'aug': 1, 'min': 1},
-	'int': {'base': 1, 'aug': 1, 'min': 1},
-	'log': {'base': 1, 'aug': 1, 'min': 1},
-	'wil': {'base': 1, 'aug': 1, 'min': 1},
-	'edg': {'base': 1, 'aug': 1, 'min': 1},
-	'mag': {'base': 0, 'aug': 0, 'min': 1},
-	'res': {'base': 0, 'aug': 0, 'min': 1}
+	'bod': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
+	'agi': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
+	'rea': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
+	'str': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
+	'cha': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
+	'int': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
+	'log': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
+	'wil': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
+	'edg': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
+	'mag': {'base': 0, 'aug': 0, 'min': 1, 'max': 0},
+	'res': {'base': 0, 'aug': 0, 'min': 1, 'max': 0}
 }
 
 var summary_data={
@@ -149,6 +149,7 @@ function set_attribute(key, value){
 	$('.'+key+'-val').html(value);
 	update_skills();
 }
+
 function increment_base(key, value){
 	attributes[key]['base'] += value;
 	attributes[key]['min'] += value;
@@ -159,11 +160,27 @@ function increment_base(key, value){
 	$('.'+key+'-val').html(attributes[key]['base']);
 
 	// Update Spinners
-	increment_spinner_vals(key, value);
+	update_attributes();
 	update_skills();
 }
 
 
+function update_attribute_display(attribute_name){
+	// Get New Values
+	var spinner = $('#'+attribute_name);
+
+	// Make sure not negative/zero
+	attribute = get_attribute(attribute_name);
+
+	// New Values
+	spinner.spinner().spinner({'min': vals['min'], 'max': vals['max']});
+	spinner.spinner().spinner('value', attributes[id]['base']);
+
+	// Update limits page
+	$('.'+attribute_name+'-limit').html(vals['max']+'('+(vals['max']+4)+')');
+}
+
+//// Summary Data ////
 function set_summary_data(key, value){
 	delta = value - summary_data[key];
 	modify_summary_data(key, delta)
@@ -190,41 +207,5 @@ function modify_summary_data(key, delta){
 	}
 }
 
-function add_quality(name, karma){
-	length = summary_data['qualities'].length;
-	summary_data['qualities'][length] = {'name': name, 'karma': karma};
-	modify_summary_data('karma', -1*karma);
 
-	return $('.active-qualities-list').html($('.active-qualities-list').html()+"<li id=quality" + length + " class='list-group-item attached-quality'>"+name+"</li>");
-}
-
-function remove_quality(id){
-	karma = summary_data["qualities"][id]['karma'];
-	summary_data["qualities"][id] = {};
-	$('.quality').addClass('hidden');
-	modify_summary_data('karma', karma);
-}
-
-function get_spinner_vals(spinner){
-	return {'min': spinner.attr('aria-valuemin'), 'max': spinner.attr('aria-valuemax')};
-}
-function increment_spinner_vals(id, delta){
-	// Get New Values
-	var spinner = $('#'+id);
-	vals = get_spinner_vals(spinner);
-	vals['min'] = parseInt(vals['min'])+delta;
-	vals['max'] = parseInt(vals['max'])+delta;
-
-	// Make sure not negative/zero
-	if (vals['min'] <= 0) {
-		vals['min'] = 1;
-	}
-
-	// New Values
-	spinner.spinner().spinner({'min': vals['min'], 'max': vals['max']});
-	spinner.spinner().spinner('value', attributes[id]['base']);
-
-	// Update limits page
-	$('.'+id+'-limit').html(vals['max']+'('+(vals['max']+4)+')');
-}
 
