@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="{% static 'css/main_style.css' %}" >
         <script src={% static 'bootstrap-3.2.0-dist/js/bootstrap.min.js' %}></script>
         <link href="{% static 'bootstrap-glyphicons-master/css/bootstrap.icon-large.min.css' %}" rel="stylesheet">
+        {% include 'data.html' %}
         <script src={% static 'js/main.js' %}></script>
         <script src={% static 'js/priorities.js' %}></script>
         <script src={% static 'js/common.js' %}></script>
@@ -70,5 +71,4 @@
         <!-- Button to exchange karma to nuyen -->
         <div class="footer"></div>
 	</body>
-    {% include 'data.html' %}
 </html>

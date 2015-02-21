@@ -25,40 +25,6 @@ $(function(){
 	});	
 });
 
-var attributes={
-	'bod': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
-	'agi': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
-	'rea': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
-	'str': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
-	'cha': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
-	'int': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
-	'log': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
-	'wil': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
-	'edg': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
-	'mag': {'base': 0, 'aug': 0, 'min': 1, 'max': 0},
-	'res': {'base': 0, 'aug': 0, 'min': 1, 'max': 0}
-}
-
-var summary_data={
-	'priorities_spent': 0,
-	'priorities_available': 16,
-	'attributes_spent': 0,
-	'attributes_available': 16,
-	'special_attributes_spent': 0,
-	'special_attributes_available': 1,
-	'skills_spent': 0,
-	'skills_available': 16,
-	'skill_groups_spent': 0,
-	'skill_groups_available': 10,
-	'karma': 25,
-	'attributes': attributes,
-	'qualities': [],
-	'race': '',
-	'magic': {'mag': 0, 'res': 0},
-	'nuyen': 6000
-}
-
-
 
 function update_attributes(key, value){
 	summary_data[key] = value;
@@ -77,7 +43,7 @@ function update_attributes(key, value){
 }
 
 function update_special_attributes(){
-	summary_data['special_attributes_spent'] = 0;
+	summary_data['special_attributes_spent'] = attributes['edg']['base'] + attributes['res']['base'] + attributes['mag']['base'] + attributes['edg']['min'] - attributes['res']['min'] - attributes['mag']['min'];
 	$('.special-spinner').each(function(){
 		summary_data['special_attributes_spent'] += parseInt($(this).attr('aria-valuenow') - $(this).attr('aria-valuemin'));
 	});
@@ -152,7 +118,7 @@ function increment_base(key, value){
 	attributes[key]['min'] += value;
 	attributes[key]['max'] += value;
 
-	if (attributes[key]['min'] <= 0) {
+	if (attributes[key]['min'] <= 0 && key != 'mag' && key != 'edg') {
 		attributes[key]['min'] = 1;
 	}
 
