@@ -5,10 +5,10 @@ $(function(){
 		start: 1,
 		spin: function( event, ui ) {
 			set_attribute($(this).attr('id'), ui.value);
-			sum=0;
-			$('.attribute-spinner').each(function(){
-		    	sum += parseInt($(this).attr('aria-valuenow') - $(this).attr('aria-valuemin'));
-			});
+			var sum = 0;
+			for (var attribute in attributes){
+				sum += attribute['base'];
+			}
 			update_attributes('attributes_spent', sum);
       	}
 	});
