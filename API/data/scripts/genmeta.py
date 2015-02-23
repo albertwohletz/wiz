@@ -20,12 +20,36 @@ for race in metatypes:
 	s = "'%s': {" % name
 
 	# Do Attributes
-	#atts = ['bod', 'agi', 'rea', 'str', 'cha', 'int', 'log', 'wil', 'edg', 'mag', 'res'];
-	#for att in atts:
-	#	s += '%s': {},
+	atts = ['bod', 'agi', 'rea', 'str', 'cha', 'int', 'log', 'wil', 'edg', 'mag', 'res', 'ini', 'ess'];
+	for att in atts:
+		s += "'%s': {'min': '%s', 'max': '%s', 'aug': '%s'}," % (att, race[att+'min'], race[att+'max'], race[att+'aug'])
+
+		race.pop(att+'min')
+		race.pop(att+'max')
+		race.pop(att+'aug')
+
+	qualities = race.pop('qualities', None)
+	s += "'qualities': ["
+	if qualities:
+		if isinstance(qualities['positive']['quality'], unicode):
+			s += "'%s'," % qualities['positive']['quality']
+		else:
+			for quality in qualities['positive']['quality']:
+				s += "'%s'," % quality
+
+	s += "],"
+
+	bonuses = race.pop('bonus')
+
+	s += "'bonus': {"
+	if bonuses:
+		for k,v in bonuses.iteritems():
+			s += "'%s': '%s'," % (k,v)
+	s += "},"
 
 	for k,v in race.iteritems():
-		s += "'%s': %s," % (k,v)
+		s += "'%s': '%s'," % (k,v)
+
 	s += '},'
 	print s 
 
