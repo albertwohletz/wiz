@@ -31,9 +31,18 @@ $(function(){
 	$('.specialization').click(function(){
 		var button_id = '#' + $(this).attr('button');
 		var button = $(button_id);
-		button.html($(this).attr('value')+'<span class="caret"></span>');
-		button.addClass('selected-specialization');
-		update_skill_summaries();
+
+		// Check if valid to activate specialization
+		var skillname = button_id.split('spec-button-')[1];
+		if (summary_data['skills'][skillname] == 0){
+			alert('Cannot add specialization until you put ranks into the skill');
+		} else if (skill_to_group[skillname] && summary_data['skill_groups'][skill_to_group[skillname]] > 0){
+			alert("Cannot add specialization if it's a part of a skill group");
+		} else {
+			button.html($(this).attr('value')+'<span class="caret"></span>');
+			button.addClass('selected-specialization');
+			update_skill_summaries();			
+		}
 	});
 });
 
