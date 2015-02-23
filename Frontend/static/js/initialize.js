@@ -1,8 +1,8 @@
 // Initialize
 $(function(){
 	for (att in attributes){
-		increment_base(att, 0);
+		change_attribute(att, attributes[att]);
 	}
 	
-	//set_race('human');
+	set_race('human');
 });

@@ -44,9 +44,6 @@ function update_attributes(key, value){
 
 function update_special_attributes(){
 	summary_data['special_attributes_spent'] = attributes['edg']['base'] + attributes['res']['base'] + attributes['mag']['base'] - attributes['edg']['min'] - attributes['res']['min'] - attributes['mag']['min'];
-	$('.special-spinner').each(function(){
-		summary_data['special_attributes_spent'] += parseInt($(this).attr('aria-valuenow') - $(this).attr('aria-valuemin'));
-	});
 
 	$('#summary-special-attributes').html(summary_data['special_attributes_spent'] + ' of ' + summary_data['special_attributes_available']);
 
@@ -113,25 +110,22 @@ function set_attribute(key, value){
 	update_skills();
 }
 
-function increment_base(key, value){
-	attributes[key]['base'] += value;
-	attributes[key]['min'] += value;
-	attributes[key]['max'] += value;
+// Update max/min/aug max
+function change_attribute(attribute_name, values){
+	dif =  parseInt(values['min']) - attributes[attribute_name]['min'];
+	attributes[attribute_name]['base'] += dif
+	attributes[attribute_name]['min'] = parseInt(values['min']);
+	attributes[attribute_name]['max'] = parseInt(values['max']);
+	attributes[attribute_name]['aug'] = parseInt(values['aug']);
 
-	if (attributes[key]['min'] <= 0 && key != 'mag' && key != 'edg' && key != 'res') {
-		attributes[key]['min'] = 1;
+	if (attributes[attribute_name]['base'] <= attributes[attribute_name]['min']) {
+		attributes[attribute_name]['base'] = attributes[attribute_name]['min'];
 	}
-
-	if (attributes[key]['base'] <= attributes[key]['min']) {
-		attributes[key]['base'] = attributes[key]['min'];
-	}
-
 
 	// Update Spinners
-	update_attribute_display(key);
+	update_attribute_display(attribute_name);
 	update_skills();
 }
-
 
 function update_attribute_display(attribute_name){
 	// Get New Values

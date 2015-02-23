@@ -185,14 +185,15 @@ var magic_values = [{
 ];
 
 function set_magic(index, name){
-	// Remove Old
-	for (attribute in summary_data['magic']){
-		increment_base(attribute, summary_data['magic'][attribute]);
-	}	
-	// Add new
+	// Set Magic Params
 	var magic = magic_values[index][name];
 	for (attribute in magic){
-		increment_base(attribute, magic[attribute]);
+		if (magic[attribute] > 0){
+			change_attribute(attribute, {'min': magic[attribute], 'max': 6, 'aug': 6});
+		} else {
+			// Set all magic attributes to zero
+			change_attribute(attribute, {'min': 0, 'max': 0, 'aug': 0});
+		}
 	}
 	summary_data['magic'] = magic;
 }
@@ -222,33 +223,17 @@ var race_values = [{
 	}
 ];
 
-var races = {
-	'human': {'edg': 1},
-	'elf': {'agi': 1, 'cha': 2},
-	'dwarf': {'bod': 2, 'str': 2, 'wil': 1, 'rea': -1},
-	'ork': {'bod': 3, 'str': 2, 'log': -1, 'cha': -1},
-	'troll': {'bod': 4, 'str': 4, 'agi': -1, 'int': -1, 'log': -1, 'cha': -2}
-}
-
 // Swap Races
 function set_race(race_name){
-	remove_race();
 	summary_data['race'] = race_name;
-
-	for (attribute in races[race_name]){
-		increment_base(attribute, races[race_name][attribute]);
+	var a = ['bod', 'agi', 'rea', 'str', 'cha', 'int', 'log', 'wil', 'edg'];
+	for (attribute in a){
+		change_attribute(a[attribute], races[race_name][a[attribute]]);
 	}
 
 	var index = $('#priority-metatype>option:selected').attr('index');
 	summary_data['special_attributes_available'] = race_values[index][race_name];
 	update_special_attributes();
-}
-
-function remove_race(){
-	race_name = summary_data['race']
-	for (attribute in races[race_name]){
-		increment_base(attribute, -1 * races[race_name][attribute]);
-	}
 }
 
 var old_nuyen = 6000;
