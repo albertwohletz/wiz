@@ -38,7 +38,10 @@ def home(request):
             {'name': 'Tasking', 'id': 'tasking', 'skills': ('Compiling', 'Decompiling', 'Registering',)}
         ],
         'skills': models.Skills.objects.all(),
-        'spells': models.Spells.objects.all().order_by('name')
+        'spells': models.Spells.objects.all().order_by('name'), 
+        'priorities': {
+            'attributes': {'A':24,'B':20,'C':16,'D':14,'E':12}
+        },
     }
 
     return render(request, 'main.html', params)
