@@ -65,7 +65,7 @@ function set_skill(skill, value){
 
 	// Update Total
 	att = get_attribute(skill);
-	$('#total-'+skill).html(summary_data['attributes'][att]['aug'] + value);
+	$('#total-'+skill).html(summary_data['attributes'][att]['base'] + value);
 }
 
 function get_attribute(skill){
