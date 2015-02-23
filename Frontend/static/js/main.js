@@ -43,7 +43,7 @@ function update_attributes(key, value){
 }
 
 function update_special_attributes(){
-	summary_data['special_attributes_spent'] = attributes['edg']['base'] + attributes['res']['base'] + attributes['mag']['base'] + attributes['edg']['min'] - attributes['res']['min'] - attributes['mag']['min'];
+	summary_data['special_attributes_spent'] = attributes['edg']['base'] + attributes['res']['base'] + attributes['mag']['base'] - attributes['edg']['min'] - attributes['res']['min'] - attributes['mag']['min'];
 	$('.special-spinner').each(function(){
 		summary_data['special_attributes_spent'] += parseInt($(this).attr('aria-valuenow') - $(this).attr('aria-valuemin'));
 	});
@@ -118,7 +118,7 @@ function increment_base(key, value){
 	attributes[key]['min'] += value;
 	attributes[key]['max'] += value;
 
-	if (attributes[key]['min'] <= 0 && key != 'mag' && key != 'edg') {
+	if (attributes[key]['min'] <= 0 && key != 'mag' && key != 'edg' && key != 'res') {
 		attributes[key]['min'] = 1;
 	}
 
