@@ -12,7 +12,6 @@
     <button class='btn-xs' data-toggle="modal" data-target="#ware-modal">Add</button>
 </div>
 
-
 <div class="modal fade" id='ware-modal'>
     <div class="modal-dialog">
         <div class="modal-content">
@@ -28,14 +27,14 @@
                         </div>
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="bioware">
-                                <ul class="list-group qualities-list">
+                                <ul class="list-group ware-list">
                                 {% for ware in biowares %}
                                     <li class="list-group-item no-pad bioware-item" description="">{{ware.name}}</li>
                                 {% endfor %}
                                 </ul>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="cyberware">
-                                <ul class="list-group qualities-list">
+                                <ul class="list-group ware-list">
                                 {% for ware in cyberware %}
                                     <li class="list-group-item no-pad cyberware-item" description="">{{ware.name}}</li>
                                 {% endfor %}
