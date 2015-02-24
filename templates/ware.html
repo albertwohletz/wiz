@@ -1,0 +1,58 @@
+<!-- Common Tab -->
+<div role="tabpanel" class="tab-pane" id="ware">
+    <!-- Added Gear -->
+    <div class='col-xs-6'>
+    	<!-- Name | Essence > Hover For Effect -->
+    </div>
+
+    <!-- Summary -->
+    <div class='col-xs-6'>
+    </div>
+
+    <button class='btn-xs' data-toggle="modal" data-target="#ware-modal">Add</button>
+</div>
+
+
+<div class="modal fade" id='ware-modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class='ware modal-list'>
+                    <div class='col-xs-8'>
+                        <div role="tabpanel">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#bioware" aria-controls="bioware" role="tab" data-toggle="tab">Bioware</a></li>
+                                <li role="presentation"><a href="#cyberware" aria-controls="cyberware" role="tab" data-toggle="tab">Cyberware</a></li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="bioware">
+                                <ul class="list-group qualities-list">
+                                {% for ware in biowares %}
+                                    <li class="list-group-item no-pad bioware-item" description="">{{ware.name}}</li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="cyberware">
+                                <ul class="list-group qualities-list">
+                                {% for ware in cyberware %}
+                                    <li class="list-group-item no-pad cyberware-item" description="">{{ware.name}}</li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-xs-4'>
+                        <div class='ware-description'>
+                        </div>
+                        <ul class="nav nav-tabs">
+                            <li class='nav-cancel'><a data-role="button" href="#">Cancel</a></li>
+                            <li class='nav-add-ware'><a data-role="button" href="#">Add</a></li>
+                        </ul>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
