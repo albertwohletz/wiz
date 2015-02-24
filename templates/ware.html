@@ -55,7 +55,13 @@
                         </div>
                         <ul class="nav nav-tabs">
                             <li class='nav-cancel'><a data-role="button" href="#">Cancel</a></li>
-                            <li class='nav-add-ware'><a data-role="button" href="#">Add</a></li>
+
+                            <!-- Split button -->
+                            <select class="form-control">
+                                {% for grade in grades %}
+                                <option class="list-group-item no-pad" ess='{{grade.ess}}' cost='{{grade.cost}}' avail='{{grade.avail}}'>{{grade.name}}</option>
+                                {% endfor %}
+                            </select>
                         </ul>   
                     </div>
                 </div>

@@ -42,14 +42,14 @@ def home(request):
         'priorities': {
             'attributes': {'A':24,'B':20,'C':16,'D':14,'E':12}
         },
-        'grades': {
-            'Standard': {'ess': '1', 'cost': '1', 'avail': '0', 'source': 'SR5', 'page': '451'},
-            #"Standard (Burnout's Way)": {'ess': '0.8', 'cost':'1', 'avail':'0', 'source':'SG', 'page':'177'}, # Need 15 karma ability.  TODO: 
-            'Used': {'ess':'1.25', 'cost':'0.75', 'avail':'-4', 'source':'SR5', 'page':'451'},
-            'Alphaware': {'ess':'0.8', 'cost':'1.2', 'avail':'+2', 'source':'SR5', 'page':'451'}, 
-            'Betaware': {'ess':'0.7', 'cost':'1.5', 'avail':'+4', 'source':'SR5', 'page':'451'},
-            'Deltaware': {'ess':'0.5', 'cost':'2.5', 'avail':'+8', 'source':'SR5', 'page':'451'}
-        },
+        'grades': [
+            {'name': 'Standard', 'ess': '1', 'cost': '1', 'avail': '0', 'source': 'SR5', 'page': '451'},
+            #{'name': "Standard (Burnout's Way)": {'ess': '0.8', 'cost':'1', 'avail':'0', 'source':'SG', 'page':'177'}, # Need 15 karma ability.  TODO: 
+            {'name': 'Used', 'ess':'1.25', 'cost':'0.75', 'avail':'-4', 'source':'SR5', 'page':'451'},
+            {'name': 'Alphaware', 'ess':'0.8', 'cost':'1.2', 'avail':'+2', 'source':'SR5', 'page':'451'}, 
+            {'name': 'Betaware', 'ess':'0.7', 'cost':'1.5', 'avail':'+4', 'source':'SR5', 'page':'451'},
+            {'name': 'Deltaware', 'ess':'0.5', 'cost':'2.5', 'avail':'+8', 'source':'SR5', 'page':'451'}
+        ],
         'bioware': [
             {'name': 'Adrenaline Pump', 'category': 'Basic', 'capacity': '0', 'source': 'SR5', 'page': '459','ess': '0.75', 'cost': '55000', 'avail': '6F', 'max_rating': '3','bonus': {},},
             {'name': 'Bone Density Augmentation', 'category': 'Basic', 'capacity': '0', 'source': 'SR5', 'page': '459','ess': '0.3', 'cost': '5000', 'avail': '4', 'max_rating': '4','bonus': {"damageresistance": "Rating", "unarmeddv": "Rating-1"},},
