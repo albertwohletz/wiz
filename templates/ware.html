@@ -57,11 +57,21 @@
                             <li class='nav-cancel'><a data-role="button" href="#">Cancel</a></li>
                             <li class='nav-add-ware'><a data-role="button" href="#">Add</a></li>
                         </ul>   
-                            <!-- Split button -->
+                            <!-- Ware Grades -->
                             <select class="form-control ware-grade">
                                 {% for grade in grades %}
                                 <option class="list-group-item no-pad" ess='{{grade.ess}}' cost='{{grade.cost}}' avail='{{grade.avail}}'>{{grade.name}}</option>
                                 {% endfor %}
+                            </select>
+
+                            <!-- Rating -->
+                            <select class="form-control ware-rating">
+                                <option class="list-group-item no-pad">1</option>
+                                <option class="list-group-item no-pad">2</option>
+                                <option class="list-group-item no-pad">3</option>
+                                <option class="list-group-item no-pad">4</option>
+                                <option class="list-group-item no-pad">5</option>
+                                <option class="list-group-item no-pad">6</option>
                             </select>
                     </div>
                 </div>

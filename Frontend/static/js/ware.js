@@ -2,46 +2,64 @@ $(document).on("click",".ware-item", function(e){
 	$('.ware-item.active').removeClass('active');
 	$(this).addClass('active');
 
+	// Create Rating selector
+	var s = '';
+	for (var i=1; i<=parseInt($(this).attr('max_rating')); i++){
+		s += '<option class="list-group-item no-pad" value="'+i+'">'+i+'</option>';
+	}
+	$('.ware-rating').html(s);
+
 	set_selected_ware_values();
 });
 
 $(function(){
 	$('.nav-add-ware').click(function(){
-		alert('bah');
+
 	});
 
 	$('.ware-grade').change(function(){
 		set_selected_ware_values();
+	});	
+	$('.ware-rating').change(function(){
+		set_selected_ware_values();
 	});
 });
+
 
 function set_selected_ware_values(){
 	var active = $('.ware-item.active');
 	var grade = $('.ware-grade').find(":selected");
+	var cost_base = active.attr('cost');
+	var ess_base = active.attr('ess');
+	var avail_base = active.attr('avail');
+	var selected_rating = parseInt($('.ware-rating').val());
+
+	// Fixed Value Cost
+	var cost = get_value(cost_base, selected_rating);
+	var ess = get_value(ess_base, selected_rating);
+	var avail = get_value(avail_base, selected_rating); // Fix
+
+	var avail_str = '';
+	if (avail_base.substr(-1) == 'R' || avail_base.substr(-1) == 'F'){
+		avail_str = avail_base.substr(-1);
+	}
+
 	$('.ware-category').html('Category: ' + active.attr('category'));
-    $('.ware-ess').html('Essence: ' + parseFloat(active.attr('ess')) * parseFloat(grade.attr('ess')));
-    $('.ware-cost').html('Cost: ' + parseFloat(active.attr('cost')) * parseFloat(grade.attr('cost')));
-    $('.ware-avail').html('Availability: ' + combine_avails(active.attr('avail'), grade.attr('avail')));
+    $('.ware-ess').html('Essence: ' + (parseFloat(ess) * parseFloat(grade.attr('ess'))).toPrecision(2));
+    $('.ware-cost').html('Cost: ' + parseFloat(cost) * parseFloat(grade.attr('cost')));
+    $('.ware-avail').html('Availability: ' + (parseInt(avail) + parseInt(grade.attr('avail'))) + avail_str);
     $('.ware-capacity').html('Capacity: ' + active.attr('capacity'));
     $('.ware-source').html('Source: ' + active.attr('source'));
 }
 
-function combine_avails(base, mod){
-	var delta = 0;
-	if (mod[0] == '-') {
-		delta = -1 * parseInt(mod.substr(1));
-	}
-	else if (mod[1] == '+') {
-		delta = parseInt(mod.substr(1));
-	} else {
-		delta = parseInt(mod);
-	}
+function get_value(cost_base, selected_rating){
+	var cost;
 
-	if (base[base.length-1] == 'R' || base[base.length-1] == 'F'){
-		return parseInt(base.substring(0, base.length - 1)) + parseInt(mod) + base[base.length-1];
+	// Fixed Value Cost
+	if (cost_base.substr(0,11) == 'FixedValues'){
+		cost = cost_base.substr(11).split(',')[selected_rating-1];
 	} else {
-		return parseInt(base) + parseInt(mod);	
+		cost = parseFloat(cost_base) * selected_rating;
 	}
-
-	
+	return cost;
 }
