@@ -29,14 +29,14 @@
                             <div role="tabpanel" class="tab-pane active" id="bioware">
                                 <ul class="list-group ware-list">
                                 {% for ware in bioware %}
-                                    <li class="list-group-item no-pad bioware-item" category='{{ware.category}}' capacity='{{ware.capacity}}' source='{{ware.source}} {{ware.page}}' ess='{{ware.ess}}' cost='{{ware.cost}}' avail='{{ware.avail}}' max_rating='{{ware.max_rating}}'>{{ware.name}}</li>
+                                    <li class="list-group-item no-pad ware-item" category='{{ware.category}}' capacity='{{ware.capacity}}' source='{{ware.source}} {{ware.page}}' ess='{{ware.ess}}' cost='{{ware.cost}}' avail='{{ware.avail}}' max_rating='{{ware.max_rating}}'>{{ware.name}}</li>
                                 {% endfor %}
                                 </ul>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="cyberware">
                                 <ul class="list-group ware-list">
                                 {% for ware in cyberware %}
-                                    <li class="list-group-item no-pad cyberware-item" category='{{ware.category}}' capacity='{{ware.capacity}}' source='{{ware.source}} {{ware.page}}' ess='{{ware.ess}}' cost='{{ware.cost}}' avail='{{ware.avail}}' max_rating='{{ware.max_rating}}'>{{ware.name}}</li>
+                                    <li class="list-group-item no-pad ware-item" category='{{ware.category}}' capacity='{{ware.capacity}}' source='{{ware.source}} {{ware.page}}' ess='{{ware.ess}}' cost='{{ware.cost}}' avail='{{ware.avail}}' max_rating='{{ware.max_rating}}'>{{ware.name}}</li>
                                 {% endfor %}
                                 </ul>
                             </div>
@@ -55,14 +55,14 @@
                         </div>
                         <ul class="nav nav-tabs">
                             <li class='nav-cancel'><a data-role="button" href="#">Cancel</a></li>
-
+                            <li class='nav-add-ware'><a data-role="button" href="#">Add</a></li>
+                        </ul>   
                             <!-- Split button -->
-                            <select class="form-control">
+                            <select class="form-control ware-grade">
                                 {% for grade in grades %}
                                 <option class="list-group-item no-pad" ess='{{grade.ess}}' cost='{{grade.cost}}' avail='{{grade.avail}}'>{{grade.name}}</option>
                                 {% endfor %}
                             </select>
-                        </ul>   
                     </div>
                 </div>
             </div>
