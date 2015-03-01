@@ -14,7 +14,9 @@ $(document).on("click",".ware-item", function(e){
 
 $(function(){
 	$('.nav-add-ware').click(function(){
-
+		var active = $('.ware-item.active');
+		var html = $('.added-ware-list').html()
+		$('.ware-list').html(html + '<ul>' + active.attr('name') + '</ul>');
 	});
 
 	$('.ware-grade').change(function(){
