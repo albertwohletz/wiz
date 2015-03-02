@@ -17,6 +17,8 @@ $(function(){
 		var active = $('.ware-item.active');
 		var html = $('.added-ware-list').html()
 		$('.ware-list').html(html + '<ul>' + active.attr('name') + '</ul>');
+		var essence = get_essence();
+		modify_summary_data('ess', -1 * essence);
 	});
 
 	$('.ware-grade').change(function(){
@@ -27,18 +29,23 @@ $(function(){
 	});
 });
 
+function get_essence(){
+	var ess_base = active.attr('ess');
+	var selected_rating = parseInt($('.ware-rating').val());
+	var ess = get_value(ess_base, selected_rating);
+	return ess
+}
 
 function set_selected_ware_values(){
 	var active = $('.ware-item.active');
 	var grade = $('.ware-grade').find(":selected");
 	var cost_base = active.attr('cost');
-	var ess_base = active.attr('ess');
 	var avail_base = active.attr('avail');
 	var selected_rating = parseInt($('.ware-rating').val());
 
 	// Fixed Value Cost
 	var cost = get_value(cost_base, selected_rating);
-	var ess = get_value(ess_base, selected_rating);
+	var ess = get_essence();
 	var avail = get_value(avail_base, selected_rating); // Fix
 
 	var avail_str = '';
