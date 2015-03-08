@@ -16,9 +16,9 @@ $(function(){
 	$('.nav-add-ware').click(function(){
 		var active = $('.ware-item.active');
 		var html = $('.added-ware-list').html()
-		$('.ware-list').html(html + '<ul>' + active.attr('name') + '</ul>');
+		$('.added-ware-list').html(html + '<ul>' + active.attr('name') + '</ul>');
 		var essence = get_essence();
-		modify_summary_data('ess', -1 * essence);
+		modify_essence(-1*essence);
 	});
 
 	$('.ware-grade').change(function(){
@@ -30,6 +30,7 @@ $(function(){
 });
 
 function get_essence(){
+	var active = $('.ware-item.active');
 	var ess_base = active.attr('ess');
 	var selected_rating = parseInt($('.ware-rating').val());
 	var ess = get_value(ess_base, selected_rating);

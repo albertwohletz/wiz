@@ -189,10 +189,11 @@ function set_magic(index, name){
 	var magic = magic_values[index][name];
 	for (attribute in magic){
 		if (magic[attribute] > 0){
-			change_attribute(attribute, {'min': magic[attribute], 'max': 6, 'aug': 6});
+			change_attribute(attribute, 6, magic[attribute], 6);
+
 		} else {
 			// Set all magic attributes to zero
-			change_attribute(attribute, {'min': 0, 'max': 0, 'aug': 0});
+			change_attribute(attribute, 0, 0, 0);
 		}
 	}
 	summary_data['magic'] = magic;
@@ -228,7 +229,10 @@ function set_race(race_name){
 	summary_data['race'] = race_name;
 	var a = ['bod', 'agi', 'rea', 'str', 'cha', 'int', 'log', 'wil', 'edg'];
 	for (attribute in a){
-		change_attribute(a[attribute], races[race_name][a[attribute]]);
+		var max = races[race_name][a[attribute]]['max']
+		var min = races[race_name][a[attribute]]['min']
+		var aug = races[race_name][a[attribute]]['aug']
+		change_attribute(a[attribute], max, min, aug);
 	}
 
 	var index = $('#priority-metatype>option:selected').attr('index');

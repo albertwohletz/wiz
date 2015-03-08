@@ -99,30 +99,56 @@ function update_skill_summaries(){
 	}
 }
 
-function get_data(key){
-	return data[key];
+function modify_essence(delta){
+	before_int = parseInt(attributes['ess']['base']);
+	attributes['ess']['base'] += delta;
+	attributes['ess']['min'] += delta;
+	attributes['ess']['max'] += delta;
+	if (attributes['ess']['min'] < 0){
+		attributes['ess']['min'] = 0;
+	}
+	after_int = parseInt(attributes['ess']['base']);
+	dif = before_int - after_int;
+	if (dif < 0){
+		attribute_delta('mag', dif);
+		attribute_delta('res', dif);
+	}
+	set_summary_data('essence', attributes['ess']['base']);
 }
 
-function set_attribute(key, value){
-	attributes[key]['base'] = value;
-	update_attribute_display(key);
-	
-	update_skills();
+function apply_essence_to_mag(){
+	// nothing for now
+}
+
+// 
+function attribute_delta(attribute_name, delta){
+	set_attribute(attribute_name, attributes[attribute_name]['base'] + delta);
+}
+
+// Sets attribute to value
+function set_attribute(attribute_name, value){
+	attributes[attribute_name]['base'] = value;
+	validate_attributes(attribute_name);
 }
 
 // Update max/min/aug max
-function change_attribute(attribute_name, values){
-	dif =  parseInt(values['min']) - attributes[attribute_name]['min'];
+function change_attribute(attribute_name, max, min, aug){
+	dif =  parseInt(min) - attributes[attribute_name]['min'];
 	attributes[attribute_name]['base'] += dif
-	attributes[attribute_name]['min'] = parseInt(values['min']);
-	attributes[attribute_name]['max'] = parseInt(values['max']);
-	attributes[attribute_name]['aug'] = parseInt(values['aug']);
-
-	if (attributes[attribute_name]['base'] <= attributes[attribute_name]['min']) {
-		attributes[attribute_name]['base'] = attributes[attribute_name]['min'];
-	}
+	attributes[attribute_name]['min'] = parseInt(min);
+	attributes[attribute_name]['max'] = parseInt(max);
+	attributes[attribute_name]['aug'] = parseInt(aug);
 
 	// Update Spinners
+	validate_attributes(attribute_name);
+}
+
+function validate_attributes(attribute_name){
+	if (attributes[attribute_name]['base'] < attributes[attribute_name]['min']) {
+		attributes[attribute_name]['base'] = attributes[attribute_name]['min'];
+	} else if (attributes[attribute_name]['base'] > attributes[attribute_name]['max']) {
+		attributes[attribute_name]['base'] = attributes[attribute_name]['min'];
+	}
 	update_attribute_display(attribute_name);
 	update_skills();
 }
@@ -146,11 +172,12 @@ function update_attribute_display(attribute_name){
 //// Summary Data ////
 function set_summary_data(key, value){
 	delta = value - summary_data[key];
-	modify_summary_data(key, delta)
+	modify_summary_data(key, delta);
 }
 
+// Modifies summary data like nuyen remaining etc.
 function modify_summary_data(key, delta){
-	summary_data[key] += parseInt(delta);
+	summary_data[key] += Number(delta);
 
 	var html_element = $('#summary-'+key);
 
@@ -169,6 +196,3 @@ function modify_summary_data(key, delta){
 		html_element.parent().removeClass('success');
 	}
 }
-
-
-
