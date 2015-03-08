@@ -16,5 +16,5 @@ function initialize(){
 		set_skill_group(skill, value);
 	});
 
-	set_race('human');
+	set_race(summary_data['race']);
 };
