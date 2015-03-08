@@ -47,15 +47,14 @@ $(function(){
 });
 
 function set_skill_group(group, value){
-	for (i in group_to_skill[group]){
-		$('#spec-button-' + group_to_skill[group][i]).html('Specialization<span class="caret"></span>');
-		$('#spec-button-' + group_to_skill[group][i]).removeClass('selected-specialization');
+	$.each(group_to_skill[group], function( i, skill ) {
+  		$('#spec-button-' +skill).html('Specialization<span class="caret"></span>');
+		$('#spec-button-' +skill).removeClass('selected-specialization');
+		set_skill(skill, value);
+	});
 
-		set_skill(group_to_skill[group][i], value);
-	}
 	summary_data['skill_groups'][group] = value;
 }
-
 function set_skill(skill, value){
 	summary_data['skills'][skill] = value;
 
@@ -131,7 +130,7 @@ var group_to_skill = {
 	'acting': [ 'con', 'impersonation', 'performance', ],
 	'athletics': [ 'gymnastics', 'running', 'swimming', ],
 	'biotech': [ 'cybertechnology', 'firstaid', 'medicine', ],
-	'closecombat': [ 'blades', 'clubs', 'unarmed combat', ],
+	'closecombat': [ 'blades', 'clubs', 'unarmedcombat', ],
 	'conjouring': [ 'banishing', 'binding', 'summoning', ],
 	'cracking': [ 'cybercombat', 'electronicwarfare', 'hacking', ],
 	'electronics': [ 'computer', 'hardware', 'software', ],

@@ -4,9 +4,17 @@ $(function(){
 });
 
 function initialize(){
-	all_attributes.forEach(function(att, index, array){
-		change_attribute(att, summary_data['attributes'][att]['max'], summary_data['attributes'][att]['min'], summary_data['attributes'][att]['aug']);
+	$.each(summary_data['attributes'], function( att, value ) {
+		change_attribute(att, value['max'], value['min'], value['aug']);
 	});
-	
+
+	$.each(summary_data['skills'], function( skill, value ) {
+		set_skill(skill, value);
+	});
+
+	$.each(summary_data['skill_groups'], function( skill, value ) {
+		set_skill_group(skill, value);
+	});
+
 	set_race('human');
 };
