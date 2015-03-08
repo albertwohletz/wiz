@@ -196,3 +196,4 @@ function modify_summary_data(key, delta){
 		html_element.parent().removeClass('success');
 	}
 }
+
