@@ -196,7 +196,6 @@ function set_magic(index, name){
 			change_attribute(attribute, 0, 0, 0);
 		}
 	}
-	summary_data['magic'] = magic;
 }
 
 var race_values = [{

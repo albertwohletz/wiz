@@ -44,3 +44,6 @@
 .max-width{
     width:100%;
 }
+.save{
+    overflow-wrap: break-word;
+}

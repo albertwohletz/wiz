@@ -1,9 +1,9 @@
 function generate_char_json(){
-	$("#save").html(JSON.stringify(summary_data));
+	$(".save").html(JSON.stringify(summary_data));
 }
 
 function load_char_json(){
-	
+
 }
 //summary_data['skills'] = {
 //	{% for skill in skills %}
