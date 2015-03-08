@@ -1,4 +1,5 @@
 <script type='text/javascript'>
+var main_attributes = ['bod'];
 var attributes={
 	'bod': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
 	'agi': {'base': 1, 'aug': 1, 'min': 1, 'max': 6},
@@ -13,10 +14,10 @@ var attributes={
 	'res': {'base': 0, 'aug': 0, 'min': 0, 'max': 0},
 	'ini': {'base': 0, 'aug': 0, 'min': 0, 'max': 0},
 	'ess': {'base': 6, 'aug': 0, 'min': 0, 'max': 6}
-}
+};
 
 var modifiers = [
-]
+];
 
 var summary_data={
 	'priorities_spent': 0,
@@ -36,7 +37,7 @@ var summary_data={
 	'magic': {'mag': 0, 'res': 0},
 	'nuyen': 6000,
 	'essence': 6
-}
+};
 var skills_to_attribute = {
 	{% for skill in skills %}
 		'{{skill.name|lower|cut:" "}}':'{{skill.attribute}}',
