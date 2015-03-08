@@ -1,8 +1,12 @@
 // Initialize
 $(function(){
-	for (att in attributes){
-		change_attribute(att, attributes[att]['max'], attributes[att]['min'], attributes[att]['aug']);
-	}
+	initialize();
+});
+
+function initialize(){
+	all_attributes.forEach(function(att, index, array){
+		change_attribute(att, summary_data['attributes'][att]['max'], summary_data['attributes'][att]['min'], summary_data['attributes'][att]['aug']);
+	});
 	
 	set_race('human');
-});
+};

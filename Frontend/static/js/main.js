@@ -43,7 +43,7 @@ function update_attributes(key, value){
 }
 
 function update_special_attributes(){
-	summary_data['special_attributes_spent'] = attributes['edg']['base'] + attributes['res']['base'] + attributes['mag']['base'] - attributes['edg']['min'] - attributes['res']['min'] - attributes['mag']['min'];
+	summary_data['special_attributes_spent'] = summary_data['attributes']['edg']['base'] + summary_data['attributes']['res']['base'] + summary_data['attributes']['mag']['base'] - summary_data['attributes']['edg']['min'] - summary_data['attributes']['res']['min'] - summary_data['attributes']['mag']['min'];
 
 	$('#summary-special-attributes').html(summary_data['special_attributes_spent'] + ' of ' + summary_data['special_attributes_available']);
 
@@ -100,20 +100,20 @@ function update_skill_summaries(){
 }
 
 function modify_essence(delta){
-	before_int = parseInt(attributes['ess']['base']);
-	attributes['ess']['base'] += delta;
-	attributes['ess']['min'] += delta;
-	attributes['ess']['max'] += delta;
-	if (attributes['ess']['min'] < 0){
-		attributes['ess']['min'] = 0;
+	before_int = parseInt(summary_data['attributes']['ess']['base']);
+	summary_data['attributes']['ess']['base'] += delta;
+	summary_data['attributes']['ess']['min'] += delta;
+	summary_data['attributes']['ess']['max'] += delta;
+	if (summary_data['attributes']['ess']['min'] < 0){
+		summary_data['attributes']['ess']['min'] = 0;
 	}
-	after_int = parseInt(attributes['ess']['base']);
+	after_int = parseInt(summary_data['attributes']['ess']['base']);
 	dif = before_int - after_int;
 	if (dif < 0){
 		attribute_delta('mag', dif);
 		attribute_delta('res', dif);
 	}
-	set_summary_data('essence', attributes['ess']['base']);
+	set_summary_data('essence', summary_data['attributes']['ess']['base']);
 }
 
 function apply_essence_to_mag(){
@@ -122,32 +122,32 @@ function apply_essence_to_mag(){
 
 // 
 function attribute_delta(attribute_name, delta){
-	set_attribute(attribute_name, attributes[attribute_name]['base'] + delta);
+	set_attribute(attribute_name, summary_data['attributes'][attribute_name]['base'] + delta);
 }
 
 // Sets attribute to value
 function set_attribute(attribute_name, value){
-	attributes[attribute_name]['base'] = value;
+	summary_data['attributes'][attribute_name]['base'] = value;
 	validate_attributes(attribute_name);
 }
 
 // Update max/min/aug max
 function change_attribute(attribute_name, max, min, aug){
-	dif =  parseInt(min) - attributes[attribute_name]['min'];
-	attributes[attribute_name]['base'] += dif
-	attributes[attribute_name]['min'] = parseInt(min);
-	attributes[attribute_name]['max'] = parseInt(max);
-	attributes[attribute_name]['aug'] = parseInt(aug);
+	dif =  parseInt(min) - summary_data['attributes'][attribute_name]['min'];
+	summary_data['attributes'][attribute_name]['base'] += dif
+	summary_data['attributes'][attribute_name]['min'] = parseInt(min);
+	summary_data['attributes'][attribute_name]['max'] = parseInt(max);
+	summary_data['attributes'][attribute_name]['aug'] = parseInt(aug);
 
 	// Update Spinners
 	validate_attributes(attribute_name);
 }
 
 function validate_attributes(attribute_name){
-	if (attributes[attribute_name]['base'] < attributes[attribute_name]['min']) {
-		attributes[attribute_name]['base'] = attributes[attribute_name]['min'];
-	} else if (attributes[attribute_name]['base'] > attributes[attribute_name]['max']) {
-		attributes[attribute_name]['base'] = attributes[attribute_name]['min'];
+	if (summary_data['attributes'][attribute_name]['base'] < summary_data['attributes'][attribute_name]['min']) {
+		summary_data['attributes'][attribute_name]['base'] = summary_data['attributes'][attribute_name]['min'];
+	} else if (summary_data['attributes'][attribute_name]['base'] > summary_data['attributes'][attribute_name]['max']) {
+		summary_data['attributes'][attribute_name]['base'] = summary_data['attributes'][attribute_name]['min'];
 	}
 	update_attribute_display(attribute_name);
 	update_skills();
@@ -158,7 +158,7 @@ function update_attribute_display(attribute_name){
 	var spinner = $('#'+attribute_name);
 
 	// Make sure not negative/zero
-	attribute = attributes[attribute_name];
+	attribute = summary_data['attributes'][attribute_name];
 
 	// New Values
 	spinner.spinner().spinner({'min': attribute['min'], 'max': attribute['max']});
