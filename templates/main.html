@@ -18,6 +18,7 @@
         <script src={% static 'js/gear.js' %}></script>
         <script src={% static 'js/ware.js' %}></script>
         <script src={% static 'js/initialize.js' %}></script>
+        <script src={% static 'js/save.js' %}></script>
 	</head>
 	<body>
         <!-- nav buttons -->
@@ -33,7 +34,8 @@
             <li role="presentation"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Charecter Info</a></li>
             <li class="divider"></li>
             <!--<li><a href="#"><span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span></a></li>-->
-            <li><a href="#"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span></a></li>
+            <li role="presentation"><a href="#save" aria-controls="save" role="tab" data-toggle="tab"><span class="glyphicon glyphicon glyphicon glyphicon-floppy-save" aria-hidden="true"></span></a></li>
+            <li role="presentation"><a href="#load" aria-controls="load" role="tab" data-toggle="tab"><span class="glyphicon glyphicon glyphicon glyphicon-floppy-open" aria-hidden="true"></span></a></li>
         </ul>
 
         <!-- Main Wrapper -->     
@@ -46,6 +48,7 @@
                 {% include 'spells.html' %}
                 {% include 'gear.html' %}
                 {% include 'ware.html' %}
+                {% include 'save.html' %}
             </div>
         </div>
 

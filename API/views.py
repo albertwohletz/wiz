@@ -3,7 +3,6 @@ import json
 from django.http import HttpResponse
 from API import models
 
-
 #def add_char(request):
 #    # Get Request Information
 #    name = request.GET['name']
