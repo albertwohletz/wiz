@@ -20,6 +20,12 @@ function initialize(){
 	$.each(summary_data['priorities'], function( priority, value ) {
 		$('#priority-'+priority).val(value);
 	});	
+	$('.priority').change();
+
+	// Each Quality
+	$.each(summary_data['qualities'], function( index, value ) {
+		add_quality(value['name'], value['karma']);
+	});	
 
 	// Set race
 	set_race(summary_data['race']);
