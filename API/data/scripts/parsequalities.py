@@ -6,6 +6,7 @@ def gen_positive_qualities():
 		name, karma, description = line.split('	')
 		entry = models.PositiveQualities(name=name, karma=karma, description=description)
 		entry.save()
+		print entry.name
 
 def gen_negative_qualities():
 	f = open('/Users/albertlwohletz/Projects/Wiz/API/data/datadumps/negative_qualities.txt')
@@ -15,3 +16,7 @@ def gen_negative_qualities():
 			name, karma, description = line.split('	')
 			entry = models.NegativeQualities(name=name, karma=karma, description=description)
 			entry.save()
+			print entry.name
+
+gen_positive_qualities()
+gen_negative_qualities()

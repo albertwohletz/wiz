@@ -2,13 +2,7 @@
 import xmltodict
 import json
 
-f = open('/Users/albertlwohletz/Projects/Wiz/API/data/datadumps/cyberware.xml')
-o = xmltodict.parse(f.read())
-gen(o['chummer']['cyberwares']['cyberware'])
 
-f = open('/Users/albertlwohletz/Projects/Wiz/API/data/datadumps/bioware.xml')
-o = xmltodict.parse(f.read())
-gen(o['chummer']['biowares']['bioware'])
 
 def gen(wares):
 	s = ""
@@ -32,3 +26,11 @@ def gen(wares):
 		s += '},\n'
 
 	print s
+
+f = open('/Users/albertlwohletz/Projects/Wiz/API/data/datadumps/cyberware.xml')
+o = xmltodict.parse(f.read())
+gen(o['chummer']['cyberwares']['cyberware'])
+
+f = open('/Users/albertlwohletz/Projects/Wiz/API/data/datadumps/bioware.xml')
+o = xmltodict.parse(f.read())
+gen(o['chummer']['biowares']['bioware'])
