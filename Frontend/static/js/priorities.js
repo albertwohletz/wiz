@@ -4,6 +4,8 @@ $(function(){
 	$('.magic-type').popover({ trigger: "hover" });
 
 	$(".priority").change(function(){
+		set_priority($(this).attr('id').split('priority-')[1], $(this).val());
+
 		var sum = 0
 		$('.priority>option:selected').each(function(){ 
 			sum += parseInt($(this).attr('index')); 
@@ -243,4 +245,8 @@ var old_nuyen = 6000;
 function set_nuyen(nuyen){
 	modify_summary_data('nuyen', nuyen - old_nuyen);
 	old_nuyen = nuyen;
+}
+
+function set_priority(id, value){
+	summary_data['priorities'][id] = value;
 }

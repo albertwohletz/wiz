@@ -16,5 +16,11 @@ function initialize(){
 		set_skill_group(skill, value);
 	});
 
+	// Set priority buttons
+	$.each(summary_data['priorities'], function( priority, value ) {
+		$('#priority-'+priority).val(value);
+	});	
+
+	// Set race
 	set_race(summary_data['race']);
 };
